@@ -2,13 +2,36 @@
 
 Material educativo para el curso de Inteligencia Artificial.
 
+## Inicio Rápido
+
+1. **Descargar el repositorio**:
+   
+   **Opción A - Git Clone**:
+   ```bash
+   git clone https://github.com/colorete87/ingenia-ucap-curso_ia.git
+   cd ingenia-ucap-curso_ia
+   ```
+   
+   **Opción B - Descarga directa**:
+   - Ir a: https://github.com/colorete87/ingenia-ucap-curso_ia
+   - Hacer clic en "Code" → "Download ZIP"
+   - Extraer el archivo ZIP en tu computadora
+
+2. **Acceder a las clases**:
+   - Para el curso de Fine-Tuning: abrir `fine-tuning/index.html`
+   - Cada clase tiene su propio `index.html` como página principal
+   - Las presentaciones se abren directamente en el navegador
+
+3. **Navegar por las presentaciones**:
+   - Usa el `index.html` de cada clase como página principal
+   - Cada sección es una presentación independiente
+
 ## 📚 Contenido Disponible
 
 ### Fine-Tuning de Modelos de Lenguaje
 - **Ubicación**: `fine-tuning/`
 - **Descripción**: Curso completo sobre fine-tuning de modelos de lenguaje
 - **Incluye**: Presentaciones, datasets, código de ejemplo y documentación
-- **Link**: [Ir al curso (index.html)](fine-tuning/index.html)
 
 ## 📁 Estructura del Proyecto
 

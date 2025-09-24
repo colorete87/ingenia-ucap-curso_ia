@@ -47,12 +47,66 @@ class TransferLearningDemo:
         
         # URL del dataset (versión pequeña para demo)
         dataset_url = "https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip"
-        path_to_zip = tf.keras.utils.get_file('cats_and_dogs.zip', origin=dataset_url, extract=True)
-        PATH = os.path.join(os.path.dirname(path_to_zip), 'cats_and_dogs_filtered')
+        
+        try:
+            print("📥 Descargando dataset...")
+            # Usar cache_dir para evitar problemas de permisos
+            path_to_zip = tf.keras.utils.get_file(
+                'cats_and_dogs.zip', 
+                origin=dataset_url, 
+                extract=True,
+                cache_dir='/tmp'
+            )
+            PATH = os.path.join(os.path.dirname(path_to_zip), 'cats_and_dogs_filtered')
+            
+            print(f"✅ Dataset descargado en: {PATH}")
+            
+            # Verificar que el directorio existe
+            if not os.path.exists(PATH):
+                raise FileNotFoundError(f"El directorio {PATH} no existe después de la descarga")
+                
+        except Exception as e:
+            print(f"❌ Error descargando dataset: {e}")
+            print("🔄 Intentando descarga manual...")
+            
+            # Intentar descarga manual
+            import urllib.request
+            import zipfile
+            
+            try:
+                # Crear directorio temporal
+                temp_dir = "/tmp/cats_dogs_dataset"
+                os.makedirs(temp_dir, exist_ok=True)
+                
+                # Descargar archivo
+                zip_path = os.path.join(temp_dir, "cats_and_dogs.zip")
+                print("📥 Descargando archivo ZIP...")
+                urllib.request.urlretrieve(dataset_url, zip_path)
+                
+                # Extraer archivo
+                print("📦 Extrayendo archivo...")
+                with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                    zip_ref.extractall(temp_dir)
+                
+                PATH = os.path.join(temp_dir, 'cats_and_dogs_filtered')
+                print(f"✅ Dataset descargado manualmente en: {PATH}")
+                
+            except Exception as e2:
+                print(f"❌ Error en descarga manual: {e2}")
+                raise Exception("No se pudo descargar el dataset. Verifica tu conexión a internet.")
         
         # Crear datasets
         train_dir = os.path.join(PATH, 'train')
         validation_dir = os.path.join(PATH, 'validation')
+        
+        # Verificar que los directorios existen
+        if not os.path.exists(train_dir):
+            raise FileNotFoundError(f"Directorio de entrenamiento no encontrado: {train_dir}")
+        if not os.path.exists(validation_dir):
+            raise FileNotFoundError(f"Directorio de validación no encontrado: {validation_dir}")
+        
+        print(f"📁 Directorio de entrenamiento: {train_dir}")
+        print(f"📁 Directorio de validación: {validation_dir}")
         
         train_dataset = image_dataset_from_directory(
             train_dir,

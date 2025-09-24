@@ -221,11 +221,11 @@
                 <section data-background-color="#F5F0FF" data-background-transition="zoom" data-auto-animate>
                     <h2><span class="emoji">📄</span> Ejemplo de JSON</h2>
                     <div class="code-block">
-                        {
-                        "nombre": "María García",
-                        "edad": 30,
-                        "ciudad": "Madrid",
-                        "hobbies": ["leer", "cocinar", "viajar"]
+                        {<br>
+                        "nombre": "María García",<br>
+                        "edad": 30,<br>
+                        "ciudad": "Madrid",<br>
+                        "hobbies": ["leer", "cocinar", "viajar"]<br>
                         }
                     </div>
                     <h3>Elementos de JSON:</h3>
@@ -292,14 +292,16 @@
                     <h2><span class="emoji">🛠️</span> Crear Archivos JSONL para Fine-Tuning</h2>
                     <h3>Formato para Chatbots (OpenAI):</h3>
                     <p>Cada línea debe tener esta estructura:</p>
-                    <div class="code-block">
-                        {"messages": [{"role": "user", "content": "PREGUNTA"}, {"role": "assistant", "content": "RESPUESTA"}]}
-                    </div>
+                    <div class="code-block">{
+    "messages": 
+        [
+            {"role": "user", "content": "PREGUNTA"},
+            {"role": "assistant", "content": "RESPUESTA"}
+        ]
+}</div>
                     <h3>Ejemplo práctico:</h3>
-                    <div class="code-block">
-                        {"messages": [{"role": "user", "content": "¿Cuál es la garantía?"}, {"role": "assistant", "content": "2 años de garantía"}]}<br>
-                        {"messages": [{"role": "user", "content": "¿Cómo hago un reclamo?"}, {"role": "assistant", "content": "Envía un email a soporte@empresa.com"}]}
-                    </div>
+                    <div class="code-block">{"messages": [{"role": "user", "content": "¿Cuál es la garantía?"}, {"role": "assistant", "content": "2 años de garantía"}]}
+{"messages": [{"role": "user", "content": "¿Cómo hago un reclamo?"}, {"role": "assistant", "content": "Envía un email a soporte@empresa.com"}]}</div>
                 </section>
 
                 <!-- Slide 22: Validación de Archivos JSONL -->

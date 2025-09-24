@@ -8,38 +8,82 @@ Este repositorio contiene el material de soporte completo para el curso de Fine-
 fine-tuning/
 ├── README.md                    # Este archivo
 ├── index.html                   # Página principal con navegación
-├── presentacion_seccion_1.html  # Fundamentos del Fine-Tuning
-├── presentacion_seccion_2.html  # Demostraciones Prácticas
-├── presentacion_seccion_3.html  # Herramientas para Fine-Tuning
-├── presentacion_seccion_4.html  # Práctica y Aplicación
 ├── css/
 │   ├── presentations.css        # Estilos compartidos
 │   └── README.md               # Documentación de estilos
-├── src_img/                    # Imágenes y recursos visuales
-└── src_md/                     # Archivos Markdown fuente
+├── html/
+│   ├── presentacion_seccion_1.html  # Fundamentos del Fine-Tuning
+│   ├── presentacion_seccion_2.html  # Demostraciones Prácticas
+│   ├── presentacion_seccion_3.html  # Herramientas para Fine-Tuning
+│   ├── presentacion_seccion_4.html  # Práctica y Aplicación
+│   └── presentacion_seccion_5.html  # Casos de Uso Avanzados
+├── images/                     # Imágenes y recursos visuales
+│   ├── background.png          # Imagen de fondo
+│   ├── logo_left.png          # Logo izquierdo
+│   ├── logo_right.png         # Logo derecho
+│   ├── ft_open_ai_*.png       # Capturas de pantalla de OpenAI
+│   └── *.jpg                  # Otras imágenes
+├── md/                         # Archivos Markdown fuente
+│   ├── seccion_1_fundamentos.md
+│   ├── seccion_2_demostraciones.md
+│   ├── seccion_3_herramientas.md
+│   └── seccion_4_practica.md
+├── src_1/                      # Datasets de entrenamiento y validación
+│   ├── training.jsonl          # Dataset de entrenamiento
+│   ├── validation.jsonl        # Dataset de validación
+│   ├── soccer_report_dataset.jsonl  # Dataset específico de fútbol
+│   └── soccer_report_validation.jsonl
+└── src_2/                      # Código de transfer learning
+    ├── transfer_learning_demo.py     # Demo de transfer learning
+    ├── requirements.txt              # Dependencias Python
+    ├── README.md                     # Documentación del demo
+    └── *.png                        # Gráficos de resultados
 ```
 
 ## 🎯 Contenido del Curso
 
 ### Sección 1: Fundamentos del Fine-Tuning
-- **Archivo**: `presentacion_seccion_1.html`
+- **Archivo**: `html/presentacion_seccion_1.html`
 - **Temas**: Modelos de lenguaje, tokens, embeddings, conceptos básicos
 - **Duración**: ~45 minutos
 
 ### Sección 2: Demostraciones Prácticas
-- **Archivo**: `presentacion_seccion_2.html`
+- **Archivo**: `html/presentacion_seccion_2.html`
 - **Temas**: Exploración de tokens, modelos base vs instruidos
 - **Duración**: ~40 minutos
 
 ### Sección 3: Herramientas para Fine-Tuning
-- **Archivo**: `presentacion_seccion_3.html`
+- **Archivo**: `html/presentacion_seccion_3.html`
 - **Temas**: OpenAI, Hugging Face, formatos de datos (JSON/JSONL)
 - **Duración**: ~50 minutos
 
 ### Sección 4: Práctica y Aplicación
-- **Archivo**: `presentacion_seccion_4.html`
+- **Archivo**: `html/presentacion_seccion_4.html`
 - **Temas**: Casos de uso, implementación práctica, mejores prácticas
 - **Duración**: ~60 minutos
+
+### Sección 5: Casos de Uso Avanzados
+- **Archivo**: `html/presentacion_seccion_5.html`
+- **Temas**: Transfer learning, casos de uso específicos, optimización avanzada
+- **Duración**: ~45 minutos
+
+## 📊 Datasets y Material Práctico
+
+### Datasets de Entrenamiento (`src_1/`)
+Este directorio contiene datasets preparados para fine-tuning:
+
+- **`training.jsonl`** y **`validation.jsonl`**: Datasets base para entrenamiento y validación
+- **`soccer_report_dataset.jsonl`**: Dataset especializado en reportes de fútbol
+- **`soccer_report_validation.jsonl`**: Dataset de validación para reportes de fútbol
+- **`training_2.jsonl`** y **`validation_2.jsonl`**: Datasets alternativos
+
+### Transfer Learning Demo (`src_2/`)
+Incluye código práctico para transfer learning:
+
+- **`transfer_learning_demo.py`**: Script principal de demostración
+- **`requirements.txt`**: Dependencias Python necesarias
+- **`README.md`**: Documentación específica del demo
+- **`transfer_learning_*.png`**: Gráficos de resultados y métricas
 
 ## 🚀 Cómo Usar
 
@@ -55,6 +99,13 @@ fine-tuning/
 3. **Presentar en pantalla completa**:
    - Presiona `F11` en tu navegador
    - Usa las flechas del teclado para navegar entre slides
+
+4. **Ejecutar demos prácticos**:
+   ```bash
+   cd src_2
+   pip install -r requirements.txt
+   python transfer_learning_demo.py
+   ```
 
 ## 🎨 Estilos Compartidos
 
@@ -115,8 +166,10 @@ Edita `css/presentations.css` para cambios que afecten todas las presentaciones.
 - **Hyperbolic AI**: https://app.hyperbolic.ai
 
 ### Documentación:
-- Archivos Markdown fuente en `src_md/`
-- Imágenes y recursos en `src_img/`
+- Archivos Markdown fuente en `md/`
+- Imágenes y recursos en `images/`
+- Datasets de entrenamiento en `src_1/`
+- Código de demostración en `src_2/`
 
 ## 🤝 Contribuciones
 
@@ -134,5 +187,5 @@ Uso libre para fines educativos.
 
 ---
 
-**Última actualización**: Diciembre 2024
-**Versión**: 1.0
+**Última actualización**: Enero 2025
+**Versión**: 1.1

@@ -26,6 +26,10 @@
 
     <div class="reveal">
         <div class="slides">
+
+            <!-- ######################### -->
+            <!-- ######## PARTE 0 ######## -->
+            <!-- ######################### -->
             <!-- Slide 1: Título -->
             <section data-background-color="#fef5e7" data-background-transition="zoom">
                 <h1>Sección 4: Práctica y Aplicación</h1>
@@ -33,6 +37,9 @@
                 <p><small>Material de Soporte para el Curso de Fine-Tuning</small></p>
             </section>
 
+            <!-- ######################### -->
+            <!-- ######## PARTE 1 ######## -->
+            <!-- ######################### -->
             <!-- Slide 2: Objetivos -->
             <section data-background-color="#E8F4FD" data-background-transition="zoom">
                 <h2><span class="emoji">🎯</span> Objetivos de esta Sección</h2>
@@ -45,225 +52,245 @@
                 </ul>
             </section>
 
-            <!-- Slide 3: Caso de Uso: Chatbot de Ventas -->
+            <!-- ######################### -->
+            <!-- ######## PARTE 2 ######## -->
+            <!-- ######################### -->
             <section data-background-color="#F0F8F0" data-background-transition="zoom">
-                <h2><span class="emoji">🤖</span> Caso de Uso: Chatbot de Ventas</h2>
-                <h3>TechStore - Tienda de Tecnología</h3>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>Productos:</strong></h4>
-                        <ul>
-                            <li>Laptops (MacBook, ThinkPad, Gaming)</li>
-                            <li>Smartphones (iPhone, Samsung, Pixel)</li>
-                            <li>Tablets y Accesorios</li>
-                        </ul>
-                        <h4><strong>Objetivo:</strong></h4>
-                        <ul>
-                            <li>Responder preguntas específicas sobre productos</li>
-                            <li>Recomendar según necesidades del cliente</li>
-                            <li>Mantener tono profesional pero amigable</li>
-                        </ul>
+              <!-- Slide 3: Caso de Uso: Chatbot de Ventas -->
+              <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                  <h2><span class="emoji">🤖</span> Caso de Uso: Chatbot de Ventas</h2>
+                  <h3>TechStore - Tienda de Tecnología</h3>
+                  <div class="two-columns">
+                      <div class="column">
+                          <h4><strong>Productos:</strong></h4>
+                          <ul>
+                              <li>Laptops (MacBook, ThinkPad, Gaming)</li>
+                              <li>Smartphones (iPhone, Samsung, Pixel)</li>
+                              <li>Tablets y Accesorios</li>
+                          </ul>
+                          <h4><strong>Objetivo:</strong></h4>
+                          <ul>
+                              <li>Responder preguntas específicas sobre productos</li>
+                              <li>Recomendar según necesidades del cliente</li>
+                              <li>Mantener tono profesional pero amigable</li>
+                          </ul>
+                      </div>
+                      <div class="column">
+                          <h4><strong>Antes del Fine-tuning:</strong></h4>
+                          <div class="code-block">
+                              <strong>Cliente:</strong> "¿Qué laptop recomiendas para programar?"<br><br>
+                              <strong>GPT genérico:</strong> "Para programar te recomiendo una laptop con al menos 8GB de RAM, procesador Intel i5 o superior..."<br>
+                          </div>
+                          <h4><strong>Después del Fine-tuning:</strong></h4>
+                          <div class="code-block">
+                              <strong>Cliente:</strong> "¿Qué laptop recomiendas para programar?"<br><br>
+                              <strong>Chatbot TechStore:</strong> "Para programar te recomiendo la MacBook Pro M2 de 14 pulgadas. Tiene 16GB de RAM, 512GB SSD y procesador M2 que es perfecto para desarrollo. Cuesta $1,999 y está disponible en gris espacial. ¿Te interesa que te reserve una para probar?"
+                          </div>
+                      </div>
+                  </div>
+                </section>
+
+                <!-- Slide 4: El Desafío Principal: Preparar el Dataset -->
+                <section data-background-color="#FFF2E6" data-background-transition="zoom">
+                    <h2><span class="emoji">🚧</span> El Desafío Principal: Preparar el Dataset</h2>
+                    <div class="warning">
+                        <p><strong>El 80% del trabajo está en los datos, no en el modelo.</strong></p>
                     </div>
-                    <div class="column">
-                        <h4><strong>Antes del Fine-tuning:</strong></h4>
-                        <div class="code-block">
-                            <strong>Cliente:</strong> "¿Qué laptop recomiendas para programar?"<br><br>
-                            <strong>GPT genérico:</strong> "Para programar te recomiendo una laptop con al menos 8GB de RAM, procesador Intel i5 o superior..."<br>
+                    <h3>¿Por qué es difícil preparar el dataset?</h3>
+                    <div class="two-columns">
+                        <div class="column">
+                            <h4><strong>1. El Problema de la Calidad</strong></h4>
+                            <ul>
+                                <li><strong>Datos del mundo real son "sucios"</strong> - Errores, inconsistencias</li>
+                                <li><strong>Contexto faltante</strong> - ¿Qué significa realmente esta respuesta?</li>
+                                <li><strong>Sesgos ocultos</strong> - Los datos reflejan prejuicios</li>
+                            </ul>
                         </div>
-                        <h4><strong>Después del Fine-tuning:</strong></h4>
-                        <div class="code-block">
-                            <strong>Cliente:</strong> "¿Qué laptop recomiendas para programar?"<br><br>
-                            <strong>Chatbot TechStore:</strong> "Para programar te recomiendo la MacBook Pro M2 de 14 pulgadas. Tiene 16GB de RAM, 512GB SSD y procesador M2 que es perfecto para desarrollo. Cuesta $1,999 y está disponible en gris espacial. ¿Te interesa que te reserve una para probar?"
+                        <div class="column">
+                            <h4><strong>2. El Problema de la Cantidad</strong></h4>
+                            <ul>
+                                <li><strong>"Necesito solo 20 ejemplos"</strong> ← Falso, necesitas 50+ mínimo</li>
+                                <li><strong>Diversidad vs Cantidad</strong> - Mejor 50 casos diversos que 100 similares</li>
+                                <li><strong>Long tail</strong> - Casos raros pero importantes</li>
+                            </ul>
                         </div>
                     </div>
-                </div>
+                </section>
+
+                <!-- Slide 5: Estrategias para Obtener Datos de Calidad -->
+                <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                    <h2><span class="emoji">📊</span> Estrategias para Obtener Datos de Calidad</h2>
+                    <h3>Paso 1: Recolección de Datos (El 60% del trabajo)</h3>
+                    <div class="two-columns">
+                        <div class="column">
+                            <h4><strong>A. Método de Observación Directa</strong></h4>
+                            <ul>
+                                <li><strong>Registra conversaciones reales</strong> de tu negocio</li>
+                                <li><strong>Documenta preguntas frecuentes</strong> que recibes</li>
+                                <li><strong>Anota respuestas exitosas</strong> que funcionan bien</li>
+                                <li><strong>Captura el tono y estilo</strong> de tu empresa</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4><strong>B. Método de Simulación</strong></h4>
+                            <ul>
+                                <li><strong>Role-playing:</strong> Actúa como cliente y como empresa</li>
+                                <li><strong>Escenarios variados:</strong> Diferentes tipos de consultas</li>
+                                <li><strong>Casos extremos:</strong> Situaciones difíciles o poco comunes</li>
+                                <li><strong>Variaciones de lenguaje:</strong> Formal, informal, técnico</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 6: Método de Expansión -->
+                <section data-background-color="#E8F4FD" data-background-transition="zoom">
+                    <h2><span class="emoji">📈</span> Método de Expansión</h2>
+                    <h3>C. Método de Expansión (Recomendado para principiantes)</h3>
+                    <ul>
+                        <li><strong>Partir de 5-10 casos reales</strong> bien documentados</li>
+                        <li><strong>Crear variaciones</strong> de cada caso</li>
+                        <li><strong>Cambiar contexto</strong> manteniendo la estructura</li>
+                    </ul>
+                    <h3>Ejemplo Práctico: Chatbot de TechStore</h3>
+                    <div class="code-block">
+                        <strong>Caso base real:</strong><br>
+                        Cliente: "¿Tienen laptops para gaming?"<br>
+                        TechStore: "¡Sí! Tenemos la ASUS ROG Strix G15 con RTX 4060, 16GB RAM y pantalla 144Hz. Perfecta para gaming. Cuesta $1,299. ¿Te interesa?"
+                    </div>
+                    <div class="code-block">
+                        <strong>Expansión del dataset (crear 15+ variaciones):</strong><br>
+                        "¿Qué laptops gaming tienen disponibles?"<br>
+                        "Busco una laptop para jugar, ¿qué me recomiendan?"<br>
+                        "¿Tienen computadoras para videojuegos?"<br>
+                        "Mi hijo quiere una laptop para gaming, ¿qué opciones hay?"
+                    </div>
+                </section>
+
+                <!-- Slide 7: Formato JSONL para OpenAI -->
+                <section>
+                    <h2><span class="emoji">📋</span> Formato JSONL para OpenAI</h2>
+                    <h3>Paso 2: Convertir a JSONL (15 minutos)</h3>
+                    <div class="code-block">
+                        <strong>Plantilla obligatoria para OpenAI:</strong><br>
+                        {"messages": [{"role": "system", "content": "Eres el asistente de ventas de TechStore. Conoces todos nuestros productos, precios y disponibilidad. Eres profesional, amigable y siempre ofreces la mejor opción para cada cliente."}, {"role": "user", "content": "¿Tienen laptops para gaming?"}, {"role": "assistant", "content": "¡Por supuesto! Tenemos varias opciones excelentes para gaming. Te recomiendo la ASUS ROG Strix G15 con RTX 4060, 16GB RAM, SSD 512GB y pantalla 144Hz. Es perfecta para juegos actuales y cuesta $1,299. También tenemos la MSI Gaming A15 por $1,199. ¿Te interesa alguna en particular o quieres ver las especificaciones completas?"}]}
+                    </div>
+                    <h3>Herramientas para crear JSONL:</h3>
+                    <ul>
+                        <li><strong>Google Sheets:</strong> Crear columnas (system, user, assistant) y exportar</li>
+                        <li><strong>ChatGPT:</strong> "Convierte estos datos a formato JSONL para OpenAI"</li>
+                        <li><strong>Plantilla online:</strong> Usar generadores web gratuitos</li>
+                        <li><strong>Editor de texto:</strong> Crear manualmente (para casos simples)</li>
+                    </ul>
+                </section>
             </section>
 
-            <!-- Slide 4: El Desafío Principal: Preparar el Dataset -->
-            <section data-background-color="#FFF2E6" data-background-transition="zoom">
-                <h2><span class="emoji">🚧</span> El Desafío Principal: Preparar el Dataset</h2>
-                <div class="warning">
-                    <p><strong>El 80% del trabajo está en los datos, no en el modelo.</strong></p>
-                </div>
-                <h3>¿Por qué es difícil preparar el dataset?</h3>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>1. El Problema de la Calidad</strong></h4>
-                        <ul>
-                            <li><strong>Datos del mundo real son "sucios"</strong> - Errores, inconsistencias</li>
-                            <li><strong>Contexto faltante</strong> - ¿Qué significa realmente esta respuesta?</li>
-                            <li><strong>Sesgos ocultos</strong> - Los datos reflejan prejuicios</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4><strong>2. El Problema de la Cantidad</strong></h4>
-                        <ul>
-                            <li><strong>"Necesito solo 20 ejemplos"</strong> ← Falso, necesitas 50+ mínimo</li>
-                            <li><strong>Diversidad vs Cantidad</strong> - Mejor 50 casos diversos que 100 similares</li>
-                            <li><strong>Long tail</strong> - Casos raros pero importantes</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Slide 5: Estrategias para Obtener Datos de Calidad -->
+            <!-- ######################### -->
+            <!-- ######## PARTE 3 ######## -->
+            <!-- ######################### -->
             <section data-background-color="#F0F8F0" data-background-transition="zoom">
-                <h2><span class="emoji">📊</span> Estrategias para Obtener Datos de Calidad</h2>
-                <h3>Paso 1: Recolección de Datos (El 60% del trabajo)</h3>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>A. Método de Observación Directa</strong></h4>
-                        <ul>
-                            <li><strong>Registra conversaciones reales</strong> de tu negocio</li>
-                            <li><strong>Documenta preguntas frecuentes</strong> que recibes</li>
-                            <li><strong>Anota respuestas exitosas</strong> que funcionan bien</li>
-                            <li><strong>Captura el tono y estilo</strong> de tu empresa</li>
-                        </ul>
+                <!-- Slide 8: Dashboard de OpenAI Fine-tuning -->
+                <section>
+                    <h2><span class="emoji">🖥️</span> Dashboard de OpenAI Fine-tuning</h2>
+                    <h3>Ejemplo simplificado</h3>
+                </section>
+
+                <!-- Slide 8: Dashboard de OpenAI Fine-tuning -->
+                <section>
+                    <h2><span class="emoji">🖥️</span> Dashboard de OpenAI Fine-tuning</h2>
+                    <h3>Paso 3: Acceder a la Plataforma</h3>
+                    <div class="image-container">
+                        <img src="../images/ft_open_ai_1.png" alt="Dashboard de OpenAI Fine-tuning" style="max-width: 80%; height: auto;">
                     </div>
-                    <div class="column">
-                        <h4><strong>B. Método de Simulación</strong></h4>
-                        <ul>
-                            <li><strong>Role-playing:</strong> Actúa como cliente y como empresa</li>
-                            <li><strong>Escenarios variados:</strong> Diferentes tipos de consultas</li>
-                            <li><strong>Casos extremos:</strong> Situaciones difíciles o poco comunes</li>
-                            <li><strong>Variaciones de lenguaje:</strong> Formal, informal, técnico</li>
-                        </ul>
+                    <p><small>Aquí puedes ver el dashboard con tus modelos de fine-tuning existentes, filtros y opciones de gestión.</small></p>
+                </section>
+
+                <!-- Slide 9: Crear Nuevo Fine-tuning -->
+                <section>
+                    <h2><span class="emoji">➕</span> Crear Nuevo Fine-tuning</h2>
+                    <h3>Paso 4: Iniciar el Proceso</h3>
+                    <div class="image-container">
+                        <img src="../images/ft_open_ai_2.png" alt="Botón Create de OpenAI" style="max-width: 80%; height: auto;">
                     </div>
-                </div>
-            </section>
+                    <p><small>Haz clic en el botón "+ Create" para comenzar a configurar tu nuevo modelo de fine-tuning.</small></p>
+                </section>
 
-            <!-- Slide 6: Método de Expansión -->
-            <section data-background-color="#E8F4FD" data-background-transition="zoom">
-                <h2><span class="emoji">📈</span> Método de Expansión</h2>
-                <h3>C. Método de Expansión (Recomendado para principiantes)</h3>
-                <ul>
-                    <li><strong>Partir de 5-10 casos reales</strong> bien documentados</li>
-                    <li><strong>Crear variaciones</strong> de cada caso</li>
-                    <li><strong>Cambiar contexto</strong> manteniendo la estructura</li>
-                </ul>
-                <h3>Ejemplo Práctico: Chatbot de TechStore</h3>
-                <div class="code-block">
-                    <strong>Caso base real:</strong><br>
-                    Cliente: "¿Tienen laptops para gaming?"<br>
-                    TechStore: "¡Sí! Tenemos la ASUS ROG Strix G15 con RTX 4060, 16GB RAM y pantalla 144Hz. Perfecta para gaming. Cuesta $1,299. ¿Te interesa?"
-                </div>
-                <div class="code-block">
-                    <strong>Expansión del dataset (crear 15+ variaciones):</strong><br>
-                    "¿Qué laptops gaming tienen disponibles?"<br>
-                    "Busco una laptop para jugar, ¿qué me recomiendan?"<br>
-                    "¿Tienen computadoras para videojuegos?"<br>
-                    "Mi hijo quiere una laptop para gaming, ¿qué opciones hay?"
-                </div>
-            </section>
-
-            <!-- Slide 7: Formato JSONL para OpenAI -->
-            <section>
-                <h2><span class="emoji">📋</span> Formato JSONL para OpenAI</h2>
-                <h3>Paso 2: Convertir a JSONL (15 minutos)</h3>
-                <div class="code-block">
-                    <strong>Plantilla obligatoria para OpenAI:</strong><br>
-                    {"messages": [{"role": "system", "content": "Eres el asistente de ventas de TechStore. Conoces todos nuestros productos, precios y disponibilidad. Eres profesional, amigable y siempre ofreces la mejor opción para cada cliente."}, {"role": "user", "content": "¿Tienen laptops para gaming?"}, {"role": "assistant", "content": "¡Por supuesto! Tenemos varias opciones excelentes para gaming. Te recomiendo la ASUS ROG Strix G15 con RTX 4060, 16GB RAM, SSD 512GB y pantalla 144Hz. Es perfecta para juegos actuales y cuesta $1,299. También tenemos la MSI Gaming A15 por $1,199. ¿Te interesa alguna en particular o quieres ver las especificaciones completas?"}]}
-                </div>
-                <h3>Herramientas para crear JSONL:</h3>
-                <ul>
-                    <li><strong>Google Sheets:</strong> Crear columnas (system, user, assistant) y exportar</li>
-                    <li><strong>ChatGPT:</strong> "Convierte estos datos a formato JSONL para OpenAI"</li>
-                    <li><strong>Plantilla online:</strong> Usar generadores web gratuitos</li>
-                    <li><strong>Editor de texto:</strong> Crear manualmente (para casos simples)</li>
-                </ul>
-            </section>
-
-            <!-- Slide 8: Dashboard de OpenAI Fine-tuning -->
-            <section>
-                <h2><span class="emoji">🖥️</span> Dashboard de OpenAI Fine-tuning</h2>
-                <h3>Paso 3: Acceder a la Plataforma</h3>
-                <div class="image-container">
-                    <img src="../images/ft_open_ai_1.png" alt="Dashboard de OpenAI Fine-tuning" style="max-width: 80%; height: auto;">
-                </div>
-                <p><small>Aquí puedes ver el dashboard con tus modelos de fine-tuning existentes, filtros y opciones de gestión.</small></p>
-            </section>
-
-            <!-- Slide 9: Crear Nuevo Fine-tuning -->
-            <section>
-                <h2><span class="emoji">➕</span> Crear Nuevo Fine-tuning</h2>
-                <h3>Paso 4: Iniciar el Proceso</h3>
-                <div class="image-container">
-                    <img src="../images/ft_open_ai_2.png" alt="Botón Create de OpenAI" style="max-width: 80%; height: auto;">
-                </div>
-                <p><small>Haz clic en el botón "+ Create" para comenzar a configurar tu nuevo modelo de fine-tuning.</small></p>
-            </section>
-
-            <!-- Slide 10: Configuración del Fine-tuning -->
-            <section>
-                <h2><span class="emoji">⚙️</span> Configuración del Fine-tuning</h2>
-                <h3>Paso 5: Configurar Parámetros</h3>
-                <div class="image-container">
-                    <img src="../images/ft_open_ai_3.png" alt="Ventana de configuración de OpenAI" style="max-width: 80%; height: auto;">
-                </div>
-                <p><small>En esta ventana configuras todos los parámetros de tu modelo: método, modelo base, sufijo, datos de entrenamiento, etc.</small></p>
-            </section>
-
-            <!-- Slide 11: Configuración Detallada -->
-            <section>
-                <h2><span class="emoji">⚙️</span> Configuración Detallada</h2>
-                <h3>Parámetros Importantes:</h3>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>Configuración Básica:</strong></h4>
-                        <ul>
-                            <li><strong>Method:</strong> Supervised (recomendado)</li>
-                            <li><strong>Base Model:</strong> gpt-3.5-turbo-0125</li>
-                            <li><strong>Suffix:</strong> techstore (identificador único)</li>
-                            <li><strong>Training Data:</strong> Tu archivo JSONL</li>
-                        </ul>
+                <!-- Slide 10: Configuración del Fine-tuning -->
+                <section>
+                    <h2><span class="emoji">⚙️</span> Configuración del Fine-tuning</h2>
+                    <h3>Paso 5: Configurar Parámetros</h3>
+                    <div class="image-container">
+                        <img src="../images/ft_open_ai_3.png" alt="Ventana de configuración de OpenAI" style="max-width: 80%; height: auto;">
                     </div>
-                    <div class="column">
-                        <h4><strong>Parámetros Avanzados:</strong></h4>
-                        <ul>
-                            <li><strong>Epochs:</strong> 3-5 (más puede ser contraproducente)</li>
-                            <li><strong>Batch Size:</strong> Automático</li>
-                            <li><strong>Learning Rate:</strong> Automático</li>
-                            <li><strong>Seed:</strong> Random (para reproducibilidad)</li>
-                        </ul>
+                    <p><small>En esta ventana configuras todos los parámetros de tu modelo: método, modelo base, sufijo, datos de entrenamiento, etc.</small></p>
+                </section>
+
+                <!-- Slide 11: Configuración Detallada -->
+                <section>
+                    <h2><span class="emoji">⚙️</span> Configuración Detallada</h2>
+                    <h3>Parámetros Importantes:</h3>
+                    <div class="two-columns">
+                        <div class="column">
+                            <h4><strong>Configuración Básica:</strong></h4>
+                            <ul>
+                                <li><strong>Method:</strong> Supervised (recomendado)</li>
+                                <li><strong>Base Model:</strong> gpt-3.5-turbo-0125</li>
+                                <li><strong>Suffix:</strong> techstore (identificador único)</li>
+                                <li><strong>Training Data:</strong> Tu archivo JSONL</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4><strong>Parámetros Avanzados:</strong></h4>
+                            <ul>
+                                <li><strong>Epochs:</strong> 3-5 (más puede ser contraproducente)</li>
+                                <li><strong>Batch Size:</strong> Automático</li>
+                                <li><strong>Learning Rate:</strong> Automático</li>
+                                <li><strong>Seed:</strong> Random (para reproducibilidad)</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="warning">
-                    <p><strong>💡 Consejo:</strong> Para tu primer modelo, mantén la configuración por defecto y enfócate en la calidad de los datos.</p>
-                </div>
+                    <div class="warning">
+                        <p><strong>💡 Consejo:</strong> Para tu primer modelo, mantén la configuración por defecto y enfócate en la calidad de los datos.</p>
+                    </div>
+                </section>
+
+                <!-- Slide 12: Proceso de Entrenamiento -->
+                <section data-background-color="#FFF2E6" data-background-transition="zoom">
+                    <h2><span class="emoji">🏋️</span> Proceso de Entrenamiento</h2>
+                    <h3>Paso 6: Entrenar y Esperar (1-6 horas)</h3>
+                    <div class="two-columns">
+                        <div class="column">
+                            <h4><strong>¿Qué pasa durante el entrenamiento?</strong></h4>
+                            <ul>
+                                <li><strong>Validación de datos</strong> - OpenAI verifica formato</li>
+                                <li><strong>Tokenización</strong> - Conversión a formato interno</li>
+                                <li><strong>Entrenamiento</strong> - Ajuste de pesos del modelo</li>
+                                <li><strong>Validación</strong> - Pruebas de calidad</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4><strong>Monitoreo del Progreso:</strong></h4>
+                            <ul>
+                                <li><strong>Estado:</strong> Pending → Running → Succeeded/Failed</li>
+                                <li><strong>Tiempo estimado:</strong> 1-6 horas según tamaño</li>
+                                <li><strong>Métricas:</strong> Loss, accuracy, perplexity</li>
+                                <li><strong>Notificaciones:</strong> Email cuando termine</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <strong>Ejemplo de progreso típico:</strong><br>
+                        - 50 ejemplos: ~1-2 horas<br>
+                        - 100 ejemplos: ~2-4 horas<br>
+                        - 200+ ejemplos: ~4-6 horas
+                    </div>
+                </section>
             </section>
 
-            <!-- Slide 12: Proceso de Entrenamiento -->
-            <section data-background-color="#FFF2E6" data-background-transition="zoom">
-                <h2><span class="emoji">🏋️</span> Proceso de Entrenamiento</h2>
-                <h3>Paso 6: Entrenar y Esperar (1-6 horas)</h3>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>¿Qué pasa durante el entrenamiento?</strong></h4>
-                        <ul>
-                            <li><strong>Validación de datos</strong> - OpenAI verifica formato</li>
-                            <li><strong>Tokenización</strong> - Conversión a formato interno</li>
-                            <li><strong>Entrenamiento</strong> - Ajuste de pesos del modelo</li>
-                            <li><strong>Validación</strong> - Pruebas de calidad</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4><strong>Monitoreo del Progreso:</strong></h4>
-                        <ul>
-                            <li><strong>Estado:</strong> Pending → Running → Succeeded/Failed</li>
-                            <li><strong>Tiempo estimado:</strong> 1-6 horas según tamaño</li>
-                            <li><strong>Métricas:</strong> Loss, accuracy, perplexity</li>
-                            <li><strong>Notificaciones:</strong> Email cuando termine</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="code-block">
-                    <strong>Ejemplo de progreso típico:</strong><br>
-                    - 50 ejemplos: ~1-2 horas<br>
-                    - 100 ejemplos: ~2-4 horas<br>
-                    - 200+ ejemplos: ~4-6 horas
-                </div>
-            </section>
-
+            <!-- ######################### -->
+            <!-- ######## PARTE 4 ######## -->
+            <!-- ######################### -->
             <!-- Slide 13: Evaluación del Modelo -->
             <section data-background-color="#F0F8F0" data-background-transition="zoom">
                 <h2><span class="emoji">📊</span> Evaluación del Modelo</h2>
@@ -295,265 +322,9 @@
                 </div>
             </section>
 
-            <!-- Slide 14: Kit de Supervivencia para Datasets -->
-            <section>
-                <h2><span class="emoji">🛠️</span> Kit de Supervivencia para Datasets</h2>
-                <h3>Herramientas Recomendadas</h3>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>1. Generación de Datos Sintéticos</strong></h4>
-                        <div class="code-block">
-                            <strong>Prompt para ChatGPT:</strong><br>
-                            "Genera 20 conversaciones realistas entre un cliente y un vendedor de TechStore. Incluye preguntas sobre laptops, smartphones y tablets. Formato: pregunta del cliente, respuesta del vendedor con productos específicos y precios."
-                        </div>
-                    </div>
-                    <div class="column">
-                        <h4><strong>2. Validador de Calidad</strong></h4>
-                        <div class="code-block">
-                            <strong>Checklist de validación:</strong><br>
-                            ✓ Cada ejemplo tiene 3 roles<br>
-                            ✓ Respuestas son específicas<br>
-                            ✓ Información es correcta<br>
-                            ✓ Tono es consistente<br>
-                            ✓ Casos son diversos
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Slide 15: Mejora Continua -->
-            <section data-background-color="#E8F4FD" data-background-transition="zoom">
-                <h2><span class="emoji">🔄</span> Mejora Continua</h2>
-                <h3>Proceso Iterativo Recomendado</h3>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>Semana 1: MVP</strong></h4>
-                        <ul>
-                            <li><strong>30-50 ejemplos</strong> de alta calidad</li>
-                            <li><strong>Casos básicos</strong> más comunes</li>
-                            <li><strong>Probar funcionamiento</strong> básico</li>
-                            <li><strong>Identificar gaps</strong> principales</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4><strong>Semana 2: Expansión</strong></h4>
-                        <ul>
-                            <li><strong>50-100 ejemplos</strong> con variaciones</li>
-                            <li><strong>Casos edge</strong> y situaciones difíciles</li>
-                            <li><strong>Métricas de calidad</strong> implementadas</li>
-                            <li><strong>Feedback de usuarios</strong> reales</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>Semana 3: Refinamiento</strong></h4>
-                        <ul>
-                            <li><strong>100+ ejemplos</strong> diversos y balanceados</li>
-                            <li><strong>A/B testing</strong> con usuarios reales</li>
-                            <li><strong>Optimización</strong> basada en métricas</li>
-                            <li><strong>Documentación</strong> completa</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4><strong>Mensual: Actualización</strong></h4>
-                        <ul>
-                            <li><strong>Nuevos datos</strong> de casos reales</li>
-                            <li><strong>Re-entrenamiento</strong> con datos actualizados</li>
-                            <li><strong>Métricas de negocio</strong> evaluadas</li>
-                            <li><strong>Escalabilidad</strong> planificada</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Slide 16: Consejos de Supervivencia -->
-            <section>
-                <h2><span class="emoji">💡</span> Consejos de Supervivencia</h2>
-                <div class="two-columns">
-                    <div class="column">
-                        <h3><strong>Para Preparar Datos:</strong></h3>
-                        <ol>
-                            <li><strong>Empieza con ChatGPT</strong> para generar tus primeros ejemplos</li>
-                            <li><strong>Usa Google Sheets</strong> para organizar y convertir a JSONL</li>
-                            <li><strong>Valida manualmente</strong> al menos el 20% de los ejemplos</li>
-                            <li><strong>Documenta todo</strong> - vas a necesitar iterar</li>
-                        </ol>
-                    </div>
-                    <div class="column">
-                        <h3><strong>Para el Entrenamiento:</strong></h3>
-                        <ol>
-                            <li><strong>Prueba con pocos datos</strong> antes del dataset completo</li>
-                            <li><strong>Usa nombres descriptivos</strong> para tus modelos</li>
-                            <li><strong>Guarda versiones</strong> de diferentes configuraciones</li>
-                            <li><strong>Monitorea métricas</strong> durante el entrenamiento</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="success">
-                    <p><strong>🎯 Regla de oro:</strong> La calidad vence a la cantidad - 30 ejemplos perfectos > 100 mediocres</p>
-                </div>
-            </section>
-
-            <!-- Slide 17: Errores Comunes -->
-            <section data-background-color="#FFF2E6" data-background-transition="zoom">
-                <h2><span class="emoji">⚠️</span> Errores Comunes</h2>
-                <div class="two-columns">
-                    <div class="column">
-                        <h3><strong>Error #1: Subestimar el Trabajo de Datos</strong></h3>
-                        <ul>
-                            <li><strong>Síntoma:</strong> "Pensé que 10 ejemplos serían suficientes"</li>
-                            <li><strong>Realidad:</strong> Necesitas 30+ ejemplos diversos mínimo</li>
-                            <li><strong>Solución:</strong> Planifica 70% del tiempo para datos, 30% para modelo</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h3><strong>Error #2: Datos Sintéticos Sin Validación</strong></h3>
-                        <ul>
-                            <li><strong>Síntoma:</strong> "Generé 100 ejemplos con ChatGPT"</li>
-                            <li><strong>Realidad:</strong> Datos sintéticos sin validación son problemáticos</li>
-                            <li><strong>Solución:</strong> Genera sintético, pero valida manualmente una muestra</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="two-columns">
-                    <div class="column">
-                        <h3><strong>Error #3: No Probar Casos Edge</strong></h3>
-                        <ul>
-                            <li><strong>Síntoma:</strong> "Funciona perfectamente con mis ejemplos"</li>
-                            <li><strong>Realidad:</strong> Los usuarios harán preguntas que no esperabas</li>
-                            <li><strong>Solución:</strong> Prueba deliberadamente con casos raros</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h3><strong>Error #4: Optimizar Solo Métricas Técnicas</strong></h3>
-                        <ul>
-                            <li><strong>Síntoma:</strong> "Tengo 95% de accuracy"</li>
-                            <li><strong>Realidad:</strong> La accuracy técnica no siempre significa utilidad real</li>
-                            <li><strong>Solución:</strong> Define métricas de negocio desde el inicio</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Slide 18: Checklist Final -->
-            <section data-background-color="#F0F8F0" data-background-transition="zoom">
-                <h2><span class="emoji">✅</span> Checklist Final</h2>
-                <div class="two-columns">
-                    <div class="column">
-                        <h3>Antes de Entrenar:</h3>
-                        <ul>
-                            <li>Dataset tiene al menos 30 ejemplos diversos</li>
-                            <li>Formato JSONL correcto para OpenAI</li>
-                            <li>Casos de prueba preparados</li>
-                            <li>Métricas de evaluación definidas</li>
-                            <li>Cuenta de OpenAI con créditos</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h3>Durante el Entrenamiento:</h3>
-                        <ul>
-                            <li>Monitorear progreso y métricas</li>
-                            <li>Tener plan B si algo falla</li>
-                            <li>Documentar configuraciones</li>
-                            <li>Preparar casos de prueba</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="checklist">
-                    <h3>Después del Entrenamiento:</h3>
-                    <ul>
-                        <li>Probar con casos no vistos</li>
-                        <li>Medir métricas de negocio</li>
-                        <li>Planificar próxima iteración</li>
-                        <li>Compartir aprendizajes con el equipo</li>
-                        <li>Documentar lecciones aprendidas</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Slide 19: Plantilla de Proyecto Final -->
-            <section>
-                <h2><span class="emoji">📝</span> Plantilla de Proyecto Final</h2>
-                <h3>Estructura de Presentación (5 minutos por participante):</h3>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>1. Introducción (1 minuto)</strong></h4>
-                        <ul>
-                            <li>Nombre y caso de uso elegido</li>
-                            <li>¿Qué problema resuelve tu chatbot?</li>
-                            <li>¿Por qué elegiste este enfoque?</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4><strong>2. El Desafío del Dataset (2 minutos)</strong></h4>
-                        <ul>
-                            <li>¿Cómo obtuviste los datos?</li>
-                            <li>¿Qué técnicas usaste para expandir el dataset?</li>
-                            <li>¿Cuáles fueron los principales obstáculos?</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="two-columns">
-                    <div class="column">
-                        <h4><strong>3. Demostración (1.5 minutos)</strong></h4>
-                        <ul>
-                            <li>Muestra el modelo funcionando en vivo</li>
-                            <li>Casos de éxito y casos donde falla</li>
-                            <li>Comparación: antes vs después del fine-tuning</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4><strong>4. Lecciones Aprendidas (0.5 minutos)</strong></h4>
-                        <ul>
-                            <li>¿Qué funcionó mejor de lo esperado?</li>
-                            <li>¿Qué fue más difícil de lo esperado?</li>
-                            <li>¿Qué harías diferente la próxima vez?</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Slide 20: Criterios de Evaluación -->
-            <section data-background-color="#E8F4FD" data-background-transition="zoom">
-                <h2><span class="emoji">📊</span> Criterios de Evaluación</h2>
-                <h3>Enfoque en la Realidad del Dataset (60%)</h3>
-                <ul>
-                    <li><strong>Calidad de los datos:</strong> ¿Son realistas y diversos?</li>
-                    <li><strong>Estrategia de obtención:</strong> ¿Cómo resolviste el problema de los datos?</li>
-                    <li><strong>Proceso documentado:</strong> ¿Puedes explicar tu metodología?</li>
-                </ul>
-                <h3>Funcionalidad del Modelo (25%)</h3>
-                <ul>
-                    <li>¿El modelo responde correctamente?</li>
-                    <li>¿Las respuestas son útiles y coherentes?</li>
-                    <li>¿Maneja casos edge apropiadamente?</li>
-                </ul>
-                <h3>Aprendizaje y Reflexión (15%)</h3>
-                <ul>
-                    <li>¿Entiendes las limitaciones de tu modelo?</li>
-                    <li>¿Puedes explicar por qué funciona (o no funciona)?</li>
-                    <li>¿Tienes un plan de mejora iterativa?</li>
-                </ul>
-            </section>
-
-            <!-- Slide 21: Mensaje Final -->
-            <section data-background-color="#F0F8F0" data-background-transition="zoom">
-                <h2><span class="emoji">🎯</span> Mensaje Final</h2>
-                <div class="success">
-                    <p><strong>¡Recuerda! El objetivo no es crear el modelo perfecto, sino aprender el proceso y entender los desafíos reales del fine-tuning.</strong></p>
-                    <p><strong>Tu primer modelo será tu peor modelo - ¡y eso está perfecto!</strong></p>
-                </div>
-                <h3>Consejos de Supervivencia ACTUALIZADOS:</h3>
-                <ul>
-                    <li><strong>El dataset es el 80% del trabajo</strong> - invierte tiempo ahí</li>
-                    <li><strong>Calidad > Cantidad</strong> - 30 ejemplos perfectos > 100 mediocres</li>
-                    <li><strong>Mide lo que importa</strong> - métricas de negocio, no solo técnicas</li>
-                    <li><strong>Itera rápidamente</strong> - mejor 3 modelos simples que 1 complejo</li>
-                    <li><strong>Documenta todo</strong> - cada iteración es un aprendizaje</li>
-                </ul>
-            </section>
-
+            <!-- ######################### -->
+            <!-- ######## PARTE Z ######## -->
+            <!-- ######################### -->
             <!-- Slide 22: Fin -->
             <section data-background-color="#fef5e7" data-background-transition="zoom">
                 <h2><span class="emoji">🎉</span> ¡Gracias!</h2>

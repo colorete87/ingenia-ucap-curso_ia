@@ -73,7 +73,6 @@
     margin: 15px 0;
     font-family: 'Courier New', monospace;
     font-size: 0.8em;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* Layout de dos columnas */
@@ -96,14 +95,12 @@
     display: inline-block;
     margin: 8px 0;
     font-weight: 600;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
 .demo-link:hover {
     background: linear-gradient(135deg, #2c5aa0 0%, #1a365d 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
 }
 
 /* Tablas de comparación */
@@ -113,7 +110,6 @@
     margin: 20px 0;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .comparison-table th,
@@ -156,7 +152,6 @@
     border-radius: 8px;
     padding: 20px;
     margin: 15px 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .success {
@@ -165,7 +160,6 @@
     border-radius: 8px;
     padding: 20px;
     margin: 15px 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* Lista de verificación */
@@ -175,7 +169,6 @@
     padding: 20px;
     margin: 15px 0;
     border-radius: 0 8px 8px 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .checklist ul {
@@ -250,9 +243,6 @@
 }
 
 /* Mejoras adicionales para mejor contraste y legibilidad */
-.reveal .slides section[data-background-color] {
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
-}
 
 .reveal .slides section[data-background-color] h1,
 .reveal .slides section[data-background-color] h2,
@@ -282,7 +272,6 @@
     font-weight: bold;
     text-align: center;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
@@ -298,7 +287,6 @@
     font-size: 1.2em;
     text-align: center;
     z-index: 1000;
-    box-shadow: 0 -4px 8px rgba(0,0,0,0.15);
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 

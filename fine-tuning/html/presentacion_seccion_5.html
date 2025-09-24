@@ -55,6 +55,51 @@
         <!-- ######################### -->
         <!-- ######## PARTE 2 ######## -->
         <!-- ######################### -->
+        <section data-background-color="#F0F8FF" data-background-transition="zoom" data-auto-animate>
+          <!-- Slide 17: Visualización CNN -->
+          <section data-background-color="#F0F8FF" data-background-transition="zoom" data-auto-animate>
+            <h2><span class="emoji">🔍</span> Visualización de Redes Convolucionales</h2>
+            <div style="text-align: center; margin: 20px 0;">
+              <img src="../images/cnn.jpg" alt="Arquitectura de CNN" style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            </div>
+            <p style="text-align: center; font-size: 1.2em; color: #666;">
+              <strong>Arquitectura típica de una Red Neuronal Convolucional</strong>
+            </p>
+          </section>
+          <!-- Slide 18: Herramientas de Visualización Interactiva -->
+          <section data-background-color="#F0F8FF" data-background-transition="zoom" data-auto-animate>
+            <h2><span class="emoji">🛠️</span> Herramientas de Visualización Interactiva</h2>
+            <p>Explora cómo funcionan las CNN de manera interactiva:</p>
+            <div style="display: flex; justify-content: center; gap: 40px; margin: 20px 0; flex-wrap: wrap;">
+              <div style="text-align: center; flex: 1; min-width: 250px;">
+                <h3>Visualización 2D</h3>
+                <a href="https://adamharley.com/nn_vis/cnn/2d.html" target="_blank" style="display: inline-block; padding: 15px 30px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-size: 1.2em; margin: 10px;">
+                  🔗 Ver Visualización 2D
+                </a>
+              </div>
+              <div style="text-align: center; flex: 1; min-width: 250px;">
+                <h3>Visualización 3D</h3>
+                <a href="https://adamharley.com/nn_vis/cnn/3d.html" target="_blank" style="display: inline-block; padding: 15px 30px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px; font-size: 1.2em; margin: 10px;">
+                  🔗 Ver Visualización 3D
+                </a>
+              </div>
+            </div>
+            <div class="success" style="margin-top: 10px;">
+              <p><strong>¿Qué puedes hacer en estas herramientas?</strong></p>
+              <ul>
+                <li>Dibujar números y ver cómo los procesa la CNN</li>
+                <li>Observar las capas convolucionales en acción</li>
+                <li>Entender cómo se extraen las características</li>
+                <li>Ver las predicciones en tiempo real</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 3 ######## -->
+        <!-- ######################### -->
         <section data-background-color="#F0F8F0" data-background-transition="zoom" data-auto-animate>
           <!-- Slide 3: ¿Qué es Transfer Learning? -->
           <section data-background-color="#F0F8F0" data-background-transition="zoom" data-auto-animate>
@@ -136,7 +181,7 @@
         </section>
 
         <!-- ######################### -->
-        <!-- ######## PARTE 3 ######## -->
+        <!-- ######## PARTE 4 ######## -->
         <!-- ######################### -->
         <section data-background-color="#F5F0FF" data-background-transition="zoom" data-auto-animate>
           <!-- Slide 6: Dos Estrategias de Transfer Learning -->
@@ -204,7 +249,7 @@
         </section>
 
         <!-- ######################### -->
-        <!-- ######## PARTE 4 ######## -->
+        <!-- ######## PARTE 5 ######## -->
         <!-- ######################### -->
         <section data-background-color="#FFF2E6" data-background-transition="zoom" data-auto-animate>
           <!-- Slide 9: Ejemplo: Clasificación Perros vs Gatos -->
@@ -237,14 +282,14 @@
             <h2><span class="emoji">🏗️</span> Arquitectura del Modelo</h2>
             <div class="code-block">
               <strong>Estructura del modelo:</strong><br><br>
-              1. <strong>MobileNetV2 Base</strong> (congelado)<br>
-                 ├── Extrae características de las imágenes<br>
-                 └── Output: 1,280 características<br><br>
-              2. <strong>Global Average Pooling</strong><br>
-                 ├── Reduce dimensiones<br>
-                 └── Output: 1,280 características<br><br>
-              3. <strong>Dropout</strong> (20% de regularización)<br><br>
-              4. <strong>Dense Layer</strong> (1 neurona)<br>
+              1. <strong>MobileNetV2 Base</strong> (congelado)
+                 ├── Extrae características de las imágenes
+                 └── Output: 1,280 características<br>
+              2. <strong>Global Average Pooling</strong>
+                 ├── Reduce dimensiones
+                 └── Output: 1,280 características<br>
+              3. <strong>Dropout</strong> (20% de regularización)<br>
+              4. <strong>Dense Layer</strong> (1 neurona)
                  └── Output: Probabilidad (0-1)
             </div>
           </section>
@@ -304,7 +349,7 @@
         </section>
 
         <!-- ######################### -->
-        <!-- ######## PARTE 5 ######## -->
+        <!-- ######## PARTE 6 ######## -->
         <!-- ######################### -->
         <section data-background-color="#FFE8E8" data-background-transition="zoom" data-auto-animate>
           <!-- Slide 13: Ventajas del Transfer Learning -->
@@ -412,7 +457,7 @@
         </section>
 
         <!-- ######################### -->
-        <!-- ######## PARTE 6 ######## -->
+        <!-- ######## PARTE 7 ######## -->
         <!-- ######################### -->
         <!-- Slide 17: Resumen -->
         <section data-background-color="#E8F8FF" data-background-transition="zoom" data-auto-animate>
@@ -442,7 +487,7 @@
         <!-- ######################### -->
         <!-- ######## PARTE Z ######## -->
         <!-- ######################### -->
-        <!-- Slide 18: Fin -->
+        <!-- Slide 19: Fin -->
         <section data-background-image="../images/background.png" data-background-size="cover" data-background-position="center" data-auto-animate>
           <h2><span class="emoji">🎉</span> ¡Gracias!</h2>
           <p>¿Preguntas sobre Transfer Learning en visión por computadora?</p>

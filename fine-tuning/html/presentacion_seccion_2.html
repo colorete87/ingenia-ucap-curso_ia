@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sección 2: Demostraciones Prácticas</title>
+    <link rel="stylesheet" href="../../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../../reveal.js/dist/theme/white.css">
+    <link rel="stylesheet" href="../css/presentations.css">
+</head>
+<body>
+    <!-- Header con título del curso -->
+    <div class="presentation-header">
+      Curso de Fine-Tuning
+    </div>
+    
+    <!-- Logos -->
+    <img src="../images/logo_left.png" alt="Logo FIUBA" class="presentation-logo-left">
+    <img src="../images/logo_right.png" alt="Logo IngenIA UBA" class="presentation-logo-right">
+    
+    <!-- Footer con información de la facultad -->
+    <div class="presentation-footer">
+      Facultad de Ingeniería Universidad de Buenos Aires (FIUBA) - Unidad de Capacitación, Actualización y Perfeccionamiento (UCAP)
+    </div>
+
+    <div class="reveal">
+        <div class="slides">
+            <!-- Slide 1: Título -->
+            <section data-background-image="../images/background.png" data-background-size="cover" data-background-position="center">
+                <h1>Sección 2: Demostraciones Prácticas</h1>
+                <h3>Conceptos Fundamentales en Acción</h3>
+                <p><small>Material de Soporte para el Curso de Fine-Tuning</small></p>
+            </section>
+
+            <!-- Sección 1: Objetivos -->
+            <section data-background-color="#C8F4FD" data-background-transition="zoom">
+                <section data-background-color="#C8F4FD" data-background-transition="zoom">
+                <h2><span class="emoji">🎯</span> Objetivos de esta Sección</h2>
+                <p>Al finalizar esta sección, los participantes podrán:</p>
+                <ul>
+                    <li>Comprender qué es un token de forma práctica</li>
+                    <li>Repasar la estructura de prompts y respuestas</li>
+                    <li>Diferenciar entre modelos base e instruidos</li>
+                    <li>Observar el comportamiento de diferentes tipos de modelos</li>
+                </ul>
+                </section>
+            </section>
+
+            <!-- Sección 2: Explorando Tokens -->
+            <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                <h2><span class="emoji">🔍</span> Explorando Tokens</h2>
+                <h3>¿Qué es un Token? (Demostración Práctica)</h3>
+                <p><strong>¿Qué es un token?</strong></p>
+                <ul>
+                    <li>Es la <strong>unidad básica</strong> que entiende el modelo</li>
+                    <li>Puede ser una palabra completa, parte de una palabra, o símbolos</li>
+                    <li>Los modelos "piensan" en tokens, no en letras o palabras</li>
+                </ul>
+                <div class="code-block">
+                    <strong>Ejemplos prácticos:</strong><br>
+                    Texto: "¡Hola mundo!"<br>
+                    ¿Cuántos tokens crees que son?
+                </div>
+                </section>
+                <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                <h2><span class="emoji">🔧</span> Herramienta de Demostración</h2>
+                <p><strong>Herramienta de demostración:</strong></p>
+                <a href="https://tiktokenizer.vercel.app/" class="demo-link" target="_blank">
+                    🔗 https://tiktokenizer.vercel.app/
+                </a>
+                <h3>Actividad Práctica: Explorando Tokens</h3>
+                <p><strong>Vamos a probar diferentes textos:</strong></p>
+                <ol>
+                    <li><strong>Texto simple en español:</strong> "Hola, ¿cómo estás?"</li>
+                    <li><strong>Texto con números:</strong> "El año 2024 tiene 366 días"</li>
+                    <li><strong>Texto con emojis:</strong> "Me gusta la pizza 🍕 y el café ☕"</li>
+                    <li><strong>Código de programación:</strong> <code>def saludar(nombre): return f"Hola, {nombre}!"</code></li>
+                </ol>
+                </section>
+
+                <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                <h2><span class="emoji">👀</span> ¿Qué observamos?</h2>
+                <ul>
+                    <li><strong>Palabras comunes</strong> = menos tokens</li>
+                    <li><strong>Palabras raras</strong> = más tokens</li>
+                    <li><strong>Números</strong> = comportamiento especial</li>
+                    <li><strong>Emojis</strong> = múltiples tokens</li>
+                    <li><strong>Código</strong> = muchos tokens</li>
+                </ul>
+                </section>
+            </section>
+
+            <!-- Sección 3: Estructura de Conversación y Modelos Base vs Instruidos -->
+            <section data-background-color="#FFF2E6" data-background-transition="zoom">
+
+                <section data-background-color="#FFF2E6" data-background-transition="zoom">
+                <h2><span class="emoji">🧠</span> Modelos Base vs Modelos Instruidos</h2>
+                <h3>Recordemos cómo funcionan los LLMs</h3>
+                <p><strong>Los LLMs se entrenan con datos de texto:</strong></p>
+                <ul>
+                    <li><strong>Fuente principal:</strong> Internet (páginas web, libros, artículos)</li>
+                    <li><strong>Objetivo original:</strong> Predecir el siguiente token</li>
+                    <li><strong>Resultado:</strong> Saben hablar mucho y muy largo, pero no como un chat</li>
+                </ul>
+                </section>
+                <section data-background-color="#FFF2E6" data-background-transition="zoom">
+                <h2><span class="emoji">❌</span> El Problema de los Modelos Base</h2>
+                <h3>¿Qué hacen naturalmente?</h3>
+                <ul>
+                    <li>Completan texto</li>
+                    <li>Continúan historias</li>
+                    <li>Siguen patrones</li>
+                    <li><strong>NO conversan como humanos</strong></li>
+                </ul>
+                <div class="code-block">
+                    <strong>Ejemplo de comportamiento:</strong><br>
+                    Input: "El clima hoy está"<br>
+                    Modelo Base: "El clima hoy está nublado. Según el pronóstico meteorológico, se esperan lluvias durante la tarde. La temperatura máxima será de 22°C y la mínima de 15°C. Los vientos serán del sureste con velocidades de 15 km/h..."
+                </div>
+                </section>
+                <section data-background-color="#FFF2E6" data-background-transition="zoom">
+                <h2><span class="emoji">✅</span> La Solución: Fine-Tuning para Instrucciones</h2>
+                <p><strong>Para llegar a un modelo que se parezca a un chat hay que hacer algo:</strong></p>
+                <ul>
+                    <li><strong>Ese algo es fine-tuning</strong></li>
+                    <li>Específicamente: <strong>Instruction Fine-Tuning</strong></li>
+                    <li>Entrenar al modelo para seguir instrucciones</li>
+                    <li>Enseñarle a conversar como humano</li>
+                </ul>
+                </section>
+            </section>
+
+            <!-- Sección 4: Demostración Práctica -->
+            <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                <h2><span class="emoji">🔬</span> Demostración Práctica: Base vs Instruido</h2>
+                <h3>Modelo Base - Llama 3.1 405B Base</h3>
+                <a href="https://app.hyperbolic.ai/models/llama31-405b-base-bf-16" class="demo-link" target="_blank">
+                    🔗 https://app.hyperbolic.ai/models/llama31-405b-base-bf-16
+                </a>
+                <p><strong>Características:</strong></p>
+                <ul>
+                    <li><strong>Modelo original</strong> sin fine-tuning de instrucciones</li>
+                    <li><strong>Completa texto</strong> en lugar de responder</li>
+                    <li><strong>Comportamiento "crudo"</strong> del modelo</li>
+                </ul>
+                <div class="code-block">
+                    <strong>Vamos a probar:</strong><br>
+                    Prompt: "El capital de Francia es"<br>
+                    ¿Qué esperamos que responda?
+                </div>
+                </section>
+                <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                <h2><span class="emoji">🤖</span> Modelo Instruido - Llama 3.1 405B Instruct</h2>
+                <a href="https://app.hyperbolic.ai/models/llama31-405b" class="demo-link" target="_blank">
+                    🔗 https://app.hyperbolic.ai/models/llama31-405b
+                </a>
+                <p><strong>Características:</strong></p>
+                <ul>
+                    <li><strong>Mismo modelo base</strong> pero con fine-tuning</li>
+                    <li><strong>Responde preguntas</strong> como un asistente</li>
+                    <li><strong>Comportamiento conversacional</strong></li>
+                </ul>
+                <div class="code-block">
+                    <strong>Vamos a probar:</strong><br>
+                    Prompt: "¿Cuál es la capital de Francia?"<br>
+                    ¿Qué diferencia esperamos ver?
+                </div>
+                </section>
+                <section data-background-color="#F0F8F0" data-background-transition="zoom">
+                <h2><span class="emoji">🔄</span> Actividad de Comparación</h2>
+                <p><strong>Prompts para probar en ambos modelos:</strong></p>
+                <ol>
+                    <li><strong>Completar texto:</strong> "La inteligencia artificial es"</li>
+                    <li><strong>Pregunta directa:</strong> "¿Qué es la inteligencia artificial?"</li>
+                    <li><strong>Instrucción específica:</strong> "Explica en 3 puntos qué es el machine learning"</li>
+                    <li><strong>Conversación:</strong> "Hola, ¿puedes ayudarme?"</li>
+                </ol>
+                </section>
+            </section>
+
+            <!-- Sección 6: Conclusiones -->
+            <section data-background-color="#E8F4FD" data-background-transition="zoom">
+                <section data-background-color="#E8F4FD" data-background-transition="zoom">
+                <h2><span class="emoji">📊</span> ¿Qué diferencias observamos?</h2>
+                <div class="two-columns">
+                    <div class="column">
+                        <h3><strong>Modelo Base:</strong></h3>
+                        <ul>
+                            <li>✅ Excelente para completar texto</li>
+                            <li>✅ Muy creativo y fluido</li>
+                            <li>❌ No sigue instrucciones específicas</li>
+                            <li>❌ No conversa como humano</li>
+                            <li>❌ Puede generar texto irrelevante</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3><strong>Modelo Instruido:</strong></h3>
+                        <ul>
+                            <li>✅ Sigue instrucciones precisas</li>
+                            <li>✅ Conversa naturalmente</li>
+                            <li>✅ Respuestas estructuradas</li>
+                            <li>✅ Se comporta como asistente</li>
+                            <li>❌ Menos creativo en algunos casos</li>
+                        </ul>
+                    </div>
+                </div>
+                </section>
+                <section data-background-color="#E8F4FD" data-background-transition="zoom">
+                <h2><span class="emoji">🎯</span> Conclusiones de las Demostraciones</h2>
+                <h3>Lo que aprendimos:</h3>
+                <ol>
+                    <li><strong>Tokens son fundamentales</strong>
+                        <ul>
+                            <li>Todo texto se convierte en tokens</li>
+                            <li>Diferentes idiomas = diferentes patrones</li>
+                            <li>Importante para entender costos y límites</li>
+                        </ul>
+                    </li>
+                    <li><strong>Estructura de conversación</strong>
+                        <ul>
+                            <li>System, User, Assistant tienen roles específicos</li>
+                            <li>El formato es crucial para el comportamiento</li>
+                            <li>La calidad del prompt afecta la respuesta</li>
+                        </ul>
+                    </li>
+                </ol>
+                </section>
+                <section data-background-color="#E8F4FD" data-background-transition="zoom">
+                <h2><span class="emoji">🔄</span> Fine-tuning Transforma Modelos</h2>
+                <ul>
+                    <li><strong>Mismo modelo base</strong> → comportamientos diferentes</li>
+                    <li><strong>Instruction tuning</strong> crea asistentes conversacionales</li>
+                    <li>Es la diferencia entre <strong>"completar"</strong> y <strong>"responder"</strong></li>
+                </ul>
+                <h3>Próximos pasos:</h3>
+                <ul>
+                    <li>En las siguientes secciones veremos cómo hacer nuestro propio fine-tuning</li>
+                    <li>Aprenderemos a preparar datos de entrenamiento</li>
+                    <li>Usaremos herramientas prácticas para el proceso</li>
+                </ul>
+                </section>
+                <section data-background-color="#E8F4FD" data-background-transition="zoom">
+                <h2><span class="emoji">🤔</span> Preguntas para Reflexionar</h2>
+                <ol>
+                    <li>¿Por qué crees que es importante entender los tokens?</li>
+                    <li>¿En qué situaciones usarías un modelo base vs uno instruido?</li>
+                    <li>¿Qué ventajas y desventajas ves en cada tipo de modelo?</li>
+                    <li>¿Cómo crees que el fine-tuning puede mejorar un modelo para tu caso específico?</li>
+                </ol>
+                </section>
+            </section>
+
+            <!-- Slides Finales -->
+            <section data-background-image="../images/background.png" data-background-size="cover" data-background-position="center">
+                <section data-background-image="../images/background.png" data-background-size="cover" data-background-position="center">
+                    <h2><span class="emoji">📚</span> Recursos Adicionales</h2>
+                    <h3>Herramientas mencionadas:</h3>
+                    <ul>
+                        <li><strong>Tiktokenizer:</strong> <a href="https://tiktokenizer.vercel.app/" target="_blank">https://tiktokenizer.vercel.app/</a></li>
+                        <li><strong>Llama 3.1 405B Base:</strong> <a href="https://app.hyperbolic.ai/models/llama31-405b-base-bf-16" target="_blank">https://app.hyperbolic.ai/models/llama31-405b-base-bf-16</a></li>
+                        <li><strong>Llama 3.1 405B Instruct:</strong> <a href="https://app.hyperbolic.ai/models/llama31-405b" target="_blank">https://app.hyperbolic.ai/models/llama31-405b</a></li>
+                    </ul>
+                    <h3>Para explorar más:</h3>
+                    <ul>
+                        <li>Prueba diferentes tipos de texto en el tokenizador</li>
+                        <li>Experimenta con ambos modelos usando diferentes prompts</li>
+                        <li>Observa cómo cambia el comportamiento según el tipo de entrada</li>
+                    </ul>
+                </section>
+
+                <section data-background-image="../images/background.png" data-background-size="cover" data-background-position="center">
+                    <h2><span class="emoji">🎉</span> ¡Gracias!</h2>
+                    <p>¿Preguntas sobre las demostraciones prácticas?</p>
+                    <p><small>Próxima sección: Herramientas para Fine-Tuning</small></p>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="../../reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade'
+        });
+        
+        // Los colores de fondo se aplican directamente con data-background-color
+    </script>
+</body>
+</html>

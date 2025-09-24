@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sección 5: Transfer Learning en Visión por Computadora</title>
+    <link rel="stylesheet" href="../../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../../reveal.js/dist/theme/white.css">
+    <link rel="stylesheet" href="../css/presentations.css">
+  </head>
+  <body>
+    <!-- Header con título del curso -->
+    <div class="presentation-header">
+      Curso de Fine-Tuning
+    </div>
+    
+    <!-- Logos -->
+    <img src="../images/logo_left.png" alt="Logo FIUBA" class="presentation-logo-left">
+    <img src="../images/logo_right.png" alt="Logo IngenIA UBA" class="presentation-logo-right">
+    
+    <!-- Footer con información de la facultad -->
+    <div class="presentation-footer">
+      Facultad de Ingeniería Universidad de Buenos Aires (FIUBA)&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Unidad de Capacitación, Actualización y Perfeccionamiento (UCAP)
+    </div>
+
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 0 ######## -->
+        <!-- ######################### -->
+        <!-- Slide 1: Título -->
+        <section data-background-color="#fef5e7" data-background-transition="zoom">
+          <h1>Sección 5: Transfer Learning en Visión por Computadora</h1>
+          <h3>Clasificación de Imágenes con Modelos Pre-entrenados</h3>
+          <p><small>Basado en: <a href="https://www.tensorflow.org/tutorials/images/transfer_learning" target="_blank">TensorFlow Transfer Learning Tutorial</a></small></p>
+        </section>
+
+        <!-- Slide 2: Objetivos -->
+        <section data-background-color="#fef5e7" data-background-transition="zoom">
+          <h2><span class="emoji">🎯</span> Objetivos de esta Sección</h2>
+          <p>Al finalizar esta sección, los participantes podrán:</p>
+          <ul>
+            <li>Entender qué es el Transfer Learning en visión por computadora</li>
+            <li>Comprender la diferencia entre Feature Extraction y Fine-tuning</li>
+            <li>Conocer los beneficios de usar modelos pre-entrenados</li>
+            <li>Ver un ejemplo práctico de clasificación de imágenes</li>
+          </ul>
+        </section>
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 1 ######## -->
+        <!-- ######################### -->
+        <section data-background-color="#fef5e7" data-background-transition="zoom">
+          <!-- Slide 3: ¿Qué es Transfer Learning? -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🔄</span> ¿Qué es Transfer Learning?</h2>
+            <h3>Definición Simple</h3>
+            <p>El <strong>Transfer Learning</strong> es una técnica que permite:</p>
+            <ul>
+              <li><strong>Reutilizar</strong> conocimiento de un modelo ya entrenado</li>
+              <li><strong>Adaptar</strong> ese conocimiento a una nueva tarea</li>
+              <li><strong>Ahorrar</strong> tiempo y recursos computacionales</li>
+              <li><strong>Mejorar</strong> el rendimiento con menos datos</li>
+            </ul>
+            <div class="success">
+              <strong>Analogía:</strong> Es como contratar a un chef experto y pedirle que se especialice en tu tipo específico de cocina, en lugar de entrenar a alguien desde cero.
+            </div>
+          </section>
+
+          <!-- Slide 4: ¿Por qué Transfer Learning? -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">💡</span> ¿Por qué usar Transfer Learning?</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3>❌ Sin Transfer Learning</h3>
+                <ul>
+                  <li>Entrenar desde cero</li>
+                  <li>Necesita millones de imágenes</li>
+                  <li>Tiempo: días o semanas</li>
+                  <li>Costo: muy alto</li>
+                  <li>Resultado: puede ser mediocre</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3>✅ Con Transfer Learning</h3>
+                <ul>
+                  <li>Reutiliza modelo existente</li>
+                  <li>Necesita miles de imágenes</li>
+                  <li>Tiempo: horas</li>
+                  <li>Costo: bajo</li>
+                  <li>Resultado: excelente</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 5: Modelos Pre-entrenados -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🏆</span> Modelos Pre-entrenados Populares</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3><strong>MobileNetV2</strong></h3>
+                <ul>
+                  <li>Optimizado para dispositivos móviles</li>
+                  <li>Pequeño y rápido</li>
+                  <li>Buena precisión</li>
+                </ul>
+                <h3><strong>ResNet</strong></h3>
+                <ul>
+                  <li>Arquitectura profunda</li>
+                  <li>Muy buena precisión</li>
+                  <li>Usado en competencias</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3><strong>EfficientNet</strong></h3>
+                <ul>
+                  <li>Equilibrio perfecto</li>
+                  <li>Eficiente en recursos</li>
+                  <li>Estado del arte</li>
+                </ul>
+                <h3><strong>VGG</strong></h3>
+                <ul>
+                  <li>Arquitectura simple</li>
+                  <li>Fácil de entender</li>
+                  <li>Buena base para aprender</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 2 ######## -->
+        <!-- ######################### -->
+        <section data-background-color="#fef5e7" data-background-transition="zoom">
+          <!-- Slide 6: Dos Estrategias de Transfer Learning -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🛠️</span> Dos Estrategias de Transfer Learning</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3>1. <strong>Feature Extraction</strong></h3>
+                <ul>
+                  <li>Congela el modelo pre-entrenado</li>
+                  <li>Solo entrena un nuevo clasificador</li>
+                  <li>Usa las características ya aprendidas</li>
+                  <li>Más rápido y simple</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3>2. <strong>Fine-tuning</strong></h3>
+                <ul>
+                  <li>Descongela algunas capas</li>
+                  <li>Entrena tanto características como clasificador</li>
+                  <li>Ajusta el modelo a tu dominio</li>
+                  <li>Mejor precisión pero más lento</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 7: Feature Extraction Detallado -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🔒</span> Feature Extraction: Paso a Paso</h2>
+            <div class="checklist">
+              <h3>Proceso:</h3>
+              <ul>
+                <li>Tomar un modelo pre-entrenado (ej: MobileNetV2)</li>
+                <li><strong>Congelar</strong> todas sus capas (no se entrenan)</li>
+                <li>Agregar nuevas capas de clasificación al final</li>
+                <li>Entrenar <strong>solo</strong> las nuevas capas</li>
+                <li>El modelo base extrae características automáticamente</li>
+              </ul>
+            </div>
+            <div class="warning">
+              <strong>Ventaja:</strong> Muy rápido porque solo entrena unas pocas capas nuevas.<br>
+              <strong>Desventaja:</strong> No se adapta completamente a tu dominio específico.
+            </div>
+          </section>
+
+          <!-- Slide 8: Fine-tuning Detallado -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🔧</span> Fine-tuning: Paso a Paso</h2>
+            <div class="checklist">
+              <h3>Proceso:</h3>
+              <ul>
+                <li>Empezar con Feature Extraction (entrenar clasificador)</li>
+                <li>Una vez estabilizado, <strong>descongelar</strong> algunas capas</li>
+                <li>Usar una tasa de aprendizaje <strong>muy baja</strong></li>
+                <li>Entrenar tanto características como clasificador</li>
+                <li>El modelo se adapta mejor a tu dominio</li>
+              </ul>
+            </div>
+            <div class="success">
+              <strong>Ventaja:</strong> Mejor precisión porque se adapta a tu problema específico.<br>
+              <strong>Consideración:</strong> Más lento y requiere más cuidado para evitar overfitting.
+            </div>
+          </section>
+        </section>
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 3 ######## -->
+        <!-- ######################### -->
+        <section data-background-color="#fef5e7" data-background-transition="zoom">
+          <!-- Slide 9: Ejemplo: Clasificación Perros vs Gatos -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🐱🐶</span> Ejemplo Práctico: Perros vs Gatos</h2>
+            <h3>El Tutorial de TensorFlow</h3>
+            <p>Vamos a seguir el ejemplo del <a href="https://www.tensorflow.org/tutorials/images/transfer_learning" target="_blank">tutorial oficial de TensorFlow</a>:</p>
+            <div class="two-columns">
+              <div class="column">
+                <h4><strong>Datos:</strong></h4>
+                <ul>
+                  <li>2,000 imágenes de gatos</li>
+                  <li>2,000 imágenes de perros</li>
+                  <li>Divididas en entrenamiento, validación y test</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h4><strong>Modelo Base:</strong></h4>
+                <ul>
+                  <li>MobileNetV2 pre-entrenado</li>
+                  <li>Entrenado en ImageNet (1.4M imágenes)</li>
+                  <li>1,000 clases diferentes</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 10: Arquitectura del Modelo -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🏗️</span> Arquitectura del Modelo</h2>
+            <div class="code-block">
+              <strong>Estructura del modelo:</strong><br><br>
+              1. <strong>MobileNetV2 Base</strong> (congelado)<br>
+                 ├── Extrae características de las imágenes<br>
+                 └── Output: 1,280 características<br><br>
+              2. <strong>Global Average Pooling</strong><br>
+                 ├── Reduce dimensiones<br>
+                 └── Output: 1,280 características<br><br>
+              3. <strong>Dropout</strong> (20% de regularización)<br><br>
+              4. <strong>Dense Layer</strong> (1 neurona)<br>
+                 └── Output: Probabilidad (0-1)
+            </div>
+          </section>
+
+          <!-- Slide 11: Proceso de Entrenamiento -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">📈</span> Proceso de Entrenamiento</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3><strong>Fase 1: Feature Extraction</strong></h3>
+                <ul>
+                  <li>10 épocas</li>
+                  <li>Modelo base congelado</li>
+                  <li>Solo entrena clasificador</li>
+                  <li>Resultado: ~95% precisión</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3><strong>Fase 2: Fine-tuning</strong></h3>
+                <ul>
+                  <li>10 épocas adicionales</li>
+                  <li>Descongela 100 capas finales</li>
+                  <li>Tasa de aprendizaje muy baja</li>
+                  <li>Resultado: ~98% precisión</li>
+                </ul>
+              </div>
+            </div>
+            <div class="success">
+              <strong>Resultado Final:</strong> 96.8% de precisión en el conjunto de test
+            </div>
+          </section>
+
+          <!-- Slide 12: Resultados Visuales -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">📊</span> Resultados del Entrenamiento</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3><strong>Curvas de Aprendizaje:</strong></h3>
+                <ul>
+                  <li>Precisión de entrenamiento: ~95%</li>
+                  <li>Precisión de validación: ~98%</li>
+                  <li>Pérdida disminuye consistentemente</li>
+                  <li>Poco overfitting gracias a la regularización</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3><strong>Predicciones:</strong></h3>
+                <ul>
+                  <li>Grid de 3x3 imágenes de test</li>
+                  <li>Predicciones correctas en la mayoría</li>
+                  <li>Algunos errores en imágenes ambiguas</li>
+                  <li>Modelo muy confiable en general</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 4 ######## -->
+        <!-- ######################### -->
+        <section data-background-color="#fef5e7" data-background-transition="zoom">
+          <!-- Slide 13: Ventajas del Transfer Learning -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">✨</span> Ventajas del Transfer Learning</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3><strong>Eficiencia:</strong></h3>
+                <ul>
+                  <li>Menos datos necesarios</li>
+                  <li>Entrenamiento más rápido</li>
+                  <li>Menor costo computacional</li>
+                  <li>Menos tiempo de desarrollo</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3><strong>Calidad:</strong></h3>
+                <ul>
+                  <li>Mejor rendimiento</li>
+                  <li>Características robustas</li>
+                  <li>Menos overfitting</li>
+                  <li>Generalización mejorada</li>
+                </ul>
+              </div>
+            </div>
+            <div class="warning">
+              <strong>Consideraciones:</strong> Funciona mejor cuando tu dominio es similar al dominio original del modelo pre-entrenado.
+            </div>
+          </section>
+
+          <!-- Slide 14: Cuándo usar cada estrategia -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🤔</span> ¿Cuándo usar cada estrategia?</h2>
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Criterio</th>
+                  <th>Feature Extraction</th>
+                  <th>Fine-tuning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Datos disponibles</strong></td>
+                  <td>Pocos (cientos)</td>
+                  <td>Muchos (miles)</td>
+                </tr>
+                <tr>
+                  <td><strong>Similitud al dominio original</strong></td>
+                  <td>Muy similar</td>
+                  <td>Algo diferente</td>
+                </tr>
+                <tr>
+                  <td><strong>Tiempo disponible</strong></td>
+                  <td>Poco tiempo</td>
+                  <td>Tiempo suficiente</td>
+                </tr>
+                <tr>
+                  <td><strong>Recursos computacionales</strong></td>
+                  <td>Limitados</td>
+                  <td>Abundantes</td>
+                </tr>
+                <tr>
+                  <td><strong>Precisión esperada</strong></td>
+                  <td>Buena (90-95%)</td>
+                  <td>Excelente (95-99%)</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Slide 15: Mejores Prácticas -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">💡</span> Mejores Prácticas</h2>
+            <div class="checklist">
+              <h3>Para obtener mejores resultados:</h3>
+              <ul>
+                <li>Elegir un modelo pre-entrenado apropiado para tu tarea</li>
+                <li>Siempre empezar con Feature Extraction</li>
+                <li>Usar Data Augmentation para aumentar la diversidad</li>
+                <li>Aplicar regularización (Dropout, L2)</li>
+                <li>Monitorear el overfitting en validación</li>
+                <li>Usar learning rates bajas en Fine-tuning</li>
+                <li>Validar en un conjunto de test independiente</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 16: Demostración Práctica -->
+          <section data-background-color="#fef5e7" data-background-transition="zoom">
+            <h2><span class="emoji">🚀</span> Demostración Práctica</h2>
+            <p>Ahora vamos a ver el código funcionando:</p>
+            <div class="success">
+              <h3>Lo que veremos:</h3>
+              <ul>
+                <li>Carga y preparación de datos</li>
+                <li>Configuración del modelo MobileNetV2</li>
+                <li>Entrenamiento con Feature Extraction</li>
+                <li>Fine-tuning del modelo</li>
+                <li>Evaluación y predicciones</li>
+              </ul>
+            </div>
+            <p><strong>Archivo:</strong> <code>transfer_learning_demo.py</code> en la carpeta <code>python_src</code></p>
+          </section>
+        </section>
+
+        <!-- ######################### -->
+        <!-- ######## PARTE Z ######## -->
+        <!-- ######################### -->
+        <!-- Slide 17: Resumen -->
+        <section data-background-color="#fef5e7" data-background-transition="zoom">
+          <h2><span class="emoji">📝</span> Resumen de Conceptos Clave</h2>
+          <div class="two-columns">
+            <div class="column">
+              <h3><strong>Transfer Learning:</strong></h3>
+              <ul>
+                <li>Reutilizar modelos pre-entrenados</li>
+                <li>Adaptar a nuevas tareas</li>
+                <li>Ahorrar tiempo y recursos</li>
+                <li>Mejorar rendimiento</li>
+              </ul>
+            </div>
+            <div class="column">
+              <h3><strong>Estrategias:</strong></h3>
+              <ul>
+                <li>Feature Extraction: rápido y simple</li>
+                <li>Fine-tuning: preciso pero más complejo</li>
+                <li>Combinar ambas para mejores resultados</li>
+                <li>Elegir según datos y recursos</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 18: Fin -->
+        <section data-background-color="#fef5e7" data-background-transition="zoom">
+          <h2><span class="emoji">🎉</span> ¡Gracias!</h2>
+          <p>¿Preguntas sobre Transfer Learning en visión por computadora?</p>
+          <div class="success">
+            <p><strong>Recursos adicionales:</strong></p>
+            <ul>
+              <li><a href="https://www.tensorflow.org/tutorials/images/transfer_learning" target="_blank">Tutorial oficial de TensorFlow</a></li>
+              <li>Documentación de Keras sobre modelos pre-entrenados</li>
+              <li>Papers sobre arquitecturas modernas (EfficientNet, Vision Transformers)</li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../../reveal.js/dist/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        transition: 'slide',
+        transitionSpeed: 'default',
+        backgroundTransition: 'fade'
+      });
+
+       // Los colores de fondo se aplican directamente con data-background-color
+    </script>
+  </body>
+</html>

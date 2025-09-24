@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sección 1: Fundamentos del Fine-Tuning</title>
+    <link rel="stylesheet" href="../../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../../reveal.js/dist/theme/white.css">
+    <link rel="stylesheet" href="../css/presentations.css">
+  </head>
+  <body>
+    <!-- Header con título del curso -->
+    <div class="presentation-header">
+      Curso de Fine-Tuning
+    </div>
+    
+    <!-- Logos -->
+    <img src="../images/logo_left.png" alt="Logo FIUBA" class="presentation-logo-left">
+    <img src="../images/logo_right.png" alt="Logo IngenIA UBA" class="presentation-logo-right">
+    
+    <!-- Footer con información de la facultad -->
+    <div class="presentation-footer">
+      Facultad de Ingeniería Universidad de Buenos Aires (FIUBA)&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Unidad de Capacitación, Actualización y Perfeccionamiento (UCAP)
+    </div>
+
+    <div class="reveal">
+      <div class="slides">
+
+
+
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 0 ######## -->
+        <!-- ######################### -->
+        <!-- Slide 1: Título -->
+        <section data-background-image="../images/background.png" data-background-size="cover" data-background-position="center">
+          <h1>Sección 1: Fundamentos del Fine-Tuning</h1>
+          <h3>Material de Soporte para el Curso de Fine-Tuning</h3>
+          <p><small>Curso de Inteligencia Artificial</small></p>
+        </section>
+
+
+        <!-- Slide 2: Objetivos -->
+        <section data-background-color="#E8F4FD" data-background-transition="zoom">
+          <h2><span class="emoji">🎯</span> Objetivos de esta Sección</h2>
+          <p>Al finalizar esta sección, los participantes podrán:</p>
+          <ul>
+            <li>Entender qué son los Modelos de Lenguaje y cómo funcionan</li>
+            <li>Comprender conceptos básicos como tokens y embeddings</li>
+            <li>Reconocer las capacidades y limitaciones de los LLMs actuales</li>
+            <li>Identificar ejemplos de uso en la vida real</li>
+          </ul>
+        </section>
+
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 1 ######## -->
+        <!-- ######################### -->
+        <section data-background-color="#F0F8F0" data-background-transition="zoom">
+
+          <!-- Slide 3: ¿Qué son los Modelos de Lenguaje? -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🤖</span> ¿Qué son los Modelos de Lenguaje?</h2>
+            <h3>Definición Simple</h3>
+            <p>Un <strong>Modelo de Lenguaje</strong> es un programa de computadora que ha aprendido a:</p>
+            <ul>
+              <li><strong>Entender</strong> el lenguaje humano</li>
+              <li><strong>Generar</strong> texto que parece escrito por humanos</li>
+              <li><strong>Responder</strong> preguntas de manera coherente</li>
+              <li><strong>Completar</strong> frases y párrafos</li>
+            </ul>
+          </section>
+
+          <!-- Slide 4: Analogía del Cerebro Digital -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🧠</span> Analogía del Cerebro Digital</h2>
+            <p>Imagina que el modelo es como un <strong>estudiante súper inteligente</strong> que:</p>
+            <ul>
+              <li>Ha leído <strong>millones de libros, artículos y conversaciones</strong></li>
+              <li>Ha memorizado <strong>patrones</strong> del lenguaje</li>
+              <li>Puede <strong>predecir</strong> qué palabra viene después</li>
+              <li>Puede <strong>generar</strong> texto nuevo basado en lo que aprendió</li>
+            </ul>
+          </section>
+
+          <!-- Slide 5: Conceptos Básicos - Tokens -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🧩</span> Conceptos Básicos</h2>
+            <h3>1. Tokens: Las "Palabras" de la IA</h3>
+            <p><strong>¿Qué es un token?</strong></p>
+            <ul>
+              <li>Un token es una <strong>unidad básica</strong> que el modelo entiende</li>
+              <li>Puede ser una palabra completa, parte de una palabra, o un símbolo</li>
+              <li>Ejemplo: "Hola mundo" = 3 tokens: ["Hola", " mundo", "!"]</li>
+            </ul>
+            <div class="code-block">
+              <strong>Ejemplos de tokens:</strong><br>
+              Texto: "¡Hola! ¿Cómo estás?"<br>
+              Tokens: ["¡", "Hola", "!", " ", "¿", "Cómo", " ", "estás", "?"]
+            </div>
+          </section>
+
+          <!-- Slide 6: Embeddings -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🧩</span> Conceptos Básicos</h2>
+            <h3>2. Embeddings: El "Significado" de las Palabras</h3>
+            <p><strong>¿Qué es un embedding?</strong></p>
+            <ul>
+              <li>Es una <strong>representación numérica</strong> de una palabra o frase</li>
+              <li>Convierte texto en <strong>números</strong> que la computadora puede procesar</li>
+              <li>Palabras similares tienen embeddings similares</li>
+            </ul>
+            <div class="code-block">
+              <strong>Ejemplo visual:</strong><br>
+              "gato" → [0.2, 0.8, -0.1, 0.5, ...]<br>
+              "perro" → [0.3, 0.7, -0.2, 0.4, ...] ← Similares<br>
+              "casa" → [0.9, -0.1, 0.8, -0.3, ...] ← Diferentes
+            </div>
+          </section>
+
+          <!-- Slide 7: Cómo Funcionan los LLMs -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🏗️</span> Cómo Funcionan los LLMs</h2>
+            <h3>El Proceso en 3 Pasos</h3>
+            <div class="two-columns">
+              <div class="column">
+                <h4>1. <strong>Entrada (Input)</strong></h4>
+                <ul>
+                  <li>Recibe texto del usuario</li>
+                  <li>Convierte cada palabra en tokens</li>
+                  <li>Transforma tokens en embeddings</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h4>2. <strong>Procesamiento</strong></h4>
+                <ul>
+                  <li>Analiza el <strong>contexto</strong> de cada palabra</li>
+                  <li>Usa <strong>atención</strong> para entender relaciones</li>
+                  <li>Genera <strong>probabilidades</strong> para la siguiente palabra</li>
+                </ul>
+              </div>
+            </div>
+            <h4>3. <strong>Salida (Output)</strong></h4>
+            <ul>
+              <li>Selecciona la palabra más probable</li>
+              <li>Repite el proceso para generar texto completo</li>
+              <li>Devuelve la respuesta al usuario</li>
+            </ul>
+          </section>
+
+          <!-- Slide 8: Ejemplo Práctico -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">💡</span> Ejemplo Práctico</h2>
+            <div class="code-block">
+              <strong>Usuario:</strong> "¿Cuál es la capital de Francia?"<br><br>
+              <strong>Proceso interno:</strong><br>
+              1. Tokeniza: ["¿", "Cuál", " ", "es", " ", "la", " ", "capital", " ", "de", " ", "Francia", "?"]<br>
+              2. Analiza contexto: pregunta geográfica sobre Francia<br>
+              3. Genera respuesta: "La capital de Francia es París"
+            </div>
+          </section>
+
+          <!-- Slide 9: Capacidades de los LLMs -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🌟</span> Capacidades de los LLMs Actuales</h2>
+            <h3>✅ Lo que SÍ pueden hacer bien</h3>
+            <div class="two-columns">
+              <div class="column">
+                <h4><strong>Comprensión de Texto</strong></h4>
+                <ul>
+                  <li>Entender preguntas complejas</li>
+                  <li>Resumir documentos largos</li>
+                  <li>Traducir entre idiomas</li>
+                  <li>Explicar conceptos difíciles</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h4><strong>Generación de Contenido</strong></h4>
+                <ul>
+                  <li>Escribir artículos y ensayos</li>
+                  <li>Crear código de programación</li>
+                  <li>Generar ideas creativas</li>
+                  <li>Escribir emails y cartas</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 10: Ejemplos Reales de Uso -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">💼</span> Ejemplos Reales de Uso</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h4><strong>En el Trabajo:</strong></h4>
+                <ul>
+                  <li><strong>Asistente de escritura:</strong> Ayuda a redactar emails profesionales</li>
+                  <li><strong>Análisis de datos:</strong> Resume reportes largos</li>
+                  <li><strong>Soporte al cliente:</strong> Responde preguntas frecuentes</li>
+                  <li><strong>Investigación:</strong> Encuentra información relevante</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h4><strong>En la Vida Personal:</strong></h4>
+                <ul>
+                  <li><strong>Tutor personal:</strong> Explica temas difíciles</li>
+                  <li><strong>Planificador:</strong> Ayuda a organizar tareas</li>
+                  <li><strong>Creativo:</strong> Sugiere ideas para proyectos</li>
+                  <li><strong>Traductor:</strong> Convierte texto a otros idiomas</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 11: Limitaciones -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">⚠️</span> Limitaciones de los LLMs</h2>
+            <h3>❌ Lo que NO pueden hacer bien</h3>
+            <div class="two-columns">
+              <div class="column">
+                <h4><strong>Información Actualizada</strong></h4>
+                <ul>
+                  <li>No saben eventos recientes (después de su entrenamiento)</li>
+                  <li>Pueden dar información desactualizada</li>
+                  <li>No tienen acceso a internet en tiempo real</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h4><strong>Hechos y Precisión</strong></h4>
+                <ul>
+                  <li>Pueden "alucinar" información falsa</li>
+                  <li>No siempre verifican la veracidad</li>
+                  <li>Pueden confundir hechos con opiniones</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+
+
+
+        <!-- ######################### -->
+        <!-- ######## PARTE 2 ######## -->
+        <!-- ######################### -->
+          <section data-background-color="#FFF2E6" data-background-transition="zoom">
+          <!-- Slide 13: ¿Qué es el Fine-Tuning? -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🤔</span> ¿Qué es el Fine-Tuning?</h2>
+            <h3>Definición Simple</h3>
+            <p>El <strong>Fine-Tuning</strong> es como <strong>"enseñar"</strong> a un modelo de IA que ya sabe mucho sobre lenguaje general, para que se especialice en una tarea específica o un dominio particular.</p>
+            <h3>Analogía del Experto General vs Especialista</h3>
+            <ul>
+              <li><strong>Modelo General:</strong> Como un médico general que sabe de todo un poco</li>
+              <li><strong>Modelo Fine-Tuned:</strong> Como un cardiólogo que se especializa en el corazón</li>
+              <li><strong>Ventaja:</strong> El especialista es mucho mejor en su área específica</li>
+            </ul>
+          </section>
+
+          <!-- Slide 13: Pre-entrenamiento vs Fine-Tuning -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🔄</span> Pre-entrenamiento vs Fine-Tuning</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3>Pre-entrenamiento: El Aprendizaje Inicial</h3>
+                <ul>
+                  <li><strong>¿Qué es?</strong> Entrenar el modelo desde cero con datos masivos</li>
+                  <li><strong>Datos:</strong> Millones de libros, artículos, páginas web</li>
+                  <li><strong>Objetivo:</strong> Aprender el lenguaje humano en general</li>
+                  <li><strong>Tiempo:</strong> Meses o años</li>
+                  <li><strong>Costo:</strong> Millones de dólares</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3>Fine-Tuning: La Especialización</h3>
+                <ul>
+                  <li><strong>¿Qué es?</strong> Ajustar un modelo ya entrenado para una tarea específica</li>
+                  <li><strong>Datos:</strong> Cientos o miles de ejemplos específicos</li>
+                  <li><strong>Objetivo:</strong> Aprender tu dominio específico</li>
+                  <li><strong>Tiempo:</strong> Horas o días</li>
+                  <li><strong>Costo:</strong> Cientos o miles de dólares</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 14: Tipos de Fine-Tuning -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">🛠️</span> Tipos Básicos de Fine-Tuning</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3>1. Fine-Tuning Completo (Full Fine-Tuning)</h3>
+                <ul>
+                  <li><strong>¿Qué hace?</strong> Ajusta TODOS los parámetros del modelo</li>
+                  <li><strong>Ventaja:</strong> Máxima personalización</li>
+                  <li><strong>Desventaja:</strong> Muy costoso y lento</li>
+                  <li><strong>Cuándo usar:</strong> Proyectos grandes con muchos datos</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3>2. Fine-Tuning Eficiente (LoRA)</h3>
+                <ul>
+                  <li><strong>¿Qué hace?</strong> Ajusta solo una pequeña parte del modelo</li>
+                  <li><strong>Ventaja:</strong> Rápido y económico</li>
+                  <li><strong>Desventaja:</strong> Menos personalización</li>
+                  <li><strong>Cuándo usar:</strong> La mayoría de casos prácticos</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 15: ¿Por qué es Importante el Fine-Tuning? -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">❓</span> ¿Por qué es Importante el Fine-Tuning?</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3>Problemas del Modelo General</h3>
+                <ul>
+                  <li><strong>Respuestas genéricas:</strong> No específicas para tu negocio</li>
+                  <li><strong>Términos desconocidos:</strong> No entiende tu jerga técnica</li>
+                  <li><strong>Tono incorrecto:</strong> No suena como tu empresa</li>
+                  <li><strong>Información desactualizada:</strong> No conoce tus productos actuales</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3>Beneficios del Fine-Tuning</h3>
+                <ul>
+                  <li><strong>Respuestas específicas:</strong> Adaptadas a tu dominio</li>
+                  <li><strong>Terminología correcta:</strong> Entiende tu lenguaje técnico</li>
+                  <li><strong>Tono consistente:</strong> Suena como tu marca</li>
+                  <li><strong>Información actualizada:</strong> Conoce tus productos y servicios</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 16: Resumen de Conceptos Clave -->
+          <section data-background-color="#F0F8F0" data-background-transition="zoom">
+            <h2><span class="emoji">📝</span> Resumen de Conceptos Clave</h2>
+            <div class="two-columns">
+              <div class="column">
+                <h3><strong>Definiciones:</strong></h3>
+                <ul>
+                  <li><strong>LLM:</strong> Modelo que entiende y genera lenguaje humano</li>
+                  <li><strong>Token:</strong> Unidad básica de texto que el modelo procesa</li>
+                  <li><strong>Embedding:</strong> Representación numérica del significado</li>
+                  <li><strong>Fine-tuning:</strong> Personalizar un modelo para tareas específicas</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h3><strong>Capacidades:</strong></h3>
+                <ul>
+                  <li>✅ Comprensión y generación de texto</li>
+                  <li>✅ Análisis y síntesis de información</li>
+                  <li>✅ Traducción y localización</li>
+                  <li>✅ Asistencia en tareas creativas</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+
+
+
+        <!-- ######################### -->
+        <!-- ######## PARTE Z ######## -->
+        <!-- ######################### -->
+        <!-- Slide 17: Fin -->
+        <section data-background-image="../images/background.png" data-background-size="cover" data-background-position="center">
+          <h2><span class="emoji">🎉</span> ¡Gracias!</h2>
+          <p>¿Preguntas sobre los fundamentos del Fine-Tuning?</p>
+        </section>
+
+
+
+
+      </div>
+    </div>
+
+    <script src="../../reveal.js/dist/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        transition: 'slide',
+        transitionSpeed: 'default',
+        backgroundTransition: 'fade'
+      });
+
+       // Los colores de fondo se aplican directamente con data-background-color
+    </script>
+  </body>
+</html>

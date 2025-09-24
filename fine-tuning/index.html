@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Fine-Tuning - Presentaciones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+
+        .presentations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .presentation-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .presentation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #e74c3c, #f39c12, #27ae60);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .presentation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+
+        .presentation-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .presentation-card h3 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .presentation-card p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .presentation-card .emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+            display: block;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .presentations-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stats {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Curso de Fine-Tuning</h1>
+            <p>Presentaciones Interactivas con Reveal.js</p>
+        </div>
+
+        <div class="presentations-grid">
+            <div class="presentation-card">
+                <span class="emoji">🤖</span>
+                <h3>Sección 1: Fundamentos</h3>
+                <p>Conceptos básicos de Modelos de Lenguaje, tokens, embeddings y qué es el fine-tuning. Perfecto para entender los fundamentos teóricos.</p>
+                <a href="html/presentacion_seccion_1.html" class="btn">Ver Presentación</a>
+            </div>
+
+            <div class="presentation-card">
+                <span class="emoji">🔬</span>
+                <h3>Sección 2: Demostraciones</h3>
+                <p>Exploración práctica de tokens, comparación entre modelos base e instruidos, y demostraciones en vivo con herramientas online.</p>
+                <a href="html/presentacion_seccion_2.html" class="btn">Ver Presentación</a>
+            </div>
+
+            <div class="presentation-card">
+                <span class="emoji">🛠️</span>
+                <h3>Sección 3: Herramientas</h3>
+                <p>Herramientas online para fine-tuning: OpenAI, Hugging Face, formatos de datos JSON/JSONL y demos paso a paso.</p>
+                <a href="html/presentacion_seccion_3.html" class="btn">Ver Presentación</a>
+            </div>
+
+            <div class="presentation-card">
+                <span class="emoji">💻</span>
+                <h3>Sección 4: Práctica</h3>
+                <p>Ejercicios prácticos, dos caminos para fine-tuning (con y sin código), y guía completa para tu proyecto final.</p>
+                <a href="html/presentacion_seccion_4.html" class="btn">Ver Presentación</a>
+            </div>
+
+            <div class="presentation-card">
+                <span class="emoji">👁️</span>
+                <h3>Sección 5: Transfer Learning</h3>
+                <p>Transfer Learning en visión por computadora: clasificación de imágenes con modelos pre-entrenados, Feature Extraction y Fine-tuning.</p>
+                <a href="html/presentacion_seccion_5.html" class="btn">Ver Presentación</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Grupo de Ingeniería en Inteligencia Artificial (IngenIA)</p>
+            <p>Facultad de Ingeniería Universidad de Buenos Aires (<a href="https://www.fi.uba.ar/" target="_blank">FIUBA</a>)</p>
+        </div>
+    </div>
+
+    <script>
+        // Agregar efecto de hover suave
+        document.querySelectorAll('.presentation-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Agregar animación de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.presentation-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+    </script>
+</body>
+</html>

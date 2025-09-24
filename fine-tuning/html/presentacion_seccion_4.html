@@ -56,38 +56,40 @@
             <!-- ######## PARTE 2 ######## -->
             <!-- ######################### -->
             <section data-background-color="#F0F8F0" data-background-transition="zoom" data-auto-animate>
-              <!-- Slide 3: Caso de Uso: Chatbot de Ventas -->
-              <section data-background-color="#F0F8F0" data-background-transition="zoom" data-auto-animate>
-                  <h2><span class="emoji">🤖</span> Caso de Uso: Chatbot de Ventas</h2>
-                  <h3>TechStore - Tienda de Tecnología</h3>
-                  <div class="two-columns">
-                      <div class="column">
-                          <h4><strong>Productos:</strong></h4>
-                          <ul>
-                              <li>Laptops (MacBook, ThinkPad, Gaming)</li>
-                              <li>Smartphones (iPhone, Samsung, Pixel)</li>
-                              <li>Tablets y Accesorios</li>
-                          </ul>
-                          <h4><strong>Objetivo:</strong></h4>
-                          <ul>
-                              <li>Responder preguntas específicas sobre productos</li>
-                              <li>Recomendar según necesidades del cliente</li>
-                              <li>Mantener tono profesional pero amigable</li>
-                          </ul>
-                      </div>
-                      <div class="column">
-                          <h4><strong>Antes del Fine-tuning:</strong></h4>
-                          <div class="code-block">
-                              <strong>Cliente:</strong> "¿Qué laptop recomiendas para programar?"<br><br>
-                              <strong>GPT genérico:</strong> "Para programar te recomiendo una laptop con al menos 8GB de RAM, procesador Intel i5 o superior..."<br>
-                          </div>
-                          <h4><strong>Después del Fine-tuning:</strong></h4>
-                          <div class="code-block">
-                              <strong>Cliente:</strong> "¿Qué laptop recomiendas para programar?"<br><br>
-                              <strong>Chatbot TechStore:</strong> "Para programar te recomiendo la MacBook Pro M2 de 14 pulgadas. Tiene 16GB de RAM, 512GB SSD y procesador M2 que es perfecto para desarrollo. Cuesta $1,999 y está disponible en gris espacial. ¿Te interesa que te reserve una para probar?"
-                          </div>
-                      </div>
-                  </div>
+                <!-- Slide 3: Caso de Uso: Chatbot de Ventas -->
+                <section data-background-color="#F0F8F0" data-background-transition="zoom" data-auto-animate>
+                    <h2><span class="emoji">🤖</span> Caso de Uso: Chatbot de Ventas</h2>
+                    <h3>TechStore - Tienda de Tecnología</h3>
+                    <div class="column">
+                        <h4><strong>Productos:</strong></h4>
+                        <ul>
+                            <li>Laptops (MacBook, ThinkPad, Gaming)</li>
+                            <li>Smartphones (iPhone, Samsung, Pixel)</li>
+                            <li>Tablets y Accesorios</li>
+                        </ul>
+                        <h4><strong>Objetivo:</strong></h4>
+                        <ul>
+                            <li>Responder preguntas específicas sobre productos</li>
+                            <li>Recomendar según necesidades del cliente</li>
+                            <li>Mantener tono profesional pero amigable</li>
+                        </ul>
+                    </div>
+                </section>
+                <section data-background-color="#F0F8F0" data-background-transition="zoom" data-auto-animate>
+                    <h2><span class="emoji">🤖</span> Caso de Uso: Chatbot de Ventas</h2>
+                    <h3>TechStore - Tienda de Tecnología</h3>
+                    <div class="column">
+                        <h4><strong>Antes del Fine-tuning:</strong></h4>
+                        <div class="code-block">
+                            <strong>Cliente:</strong> "¿Qué laptop recomiendas para programar?"<br>
+                            <strong>GPT genérico:</strong> "Para programar te recomiendo una laptop con al menos 8GB de RAM, procesador Intel i5 o superior..."
+                        </div>
+                        <h4><strong>Después del Fine-tuning:</strong></h4>
+                        <div class="code-block">
+                            <strong>Cliente:</strong> "¿Qué laptop recomiendas para programar?"<br>
+                            <strong>Chatbot TechStore:</strong> "Para programar te recomiendo la MacBook Pro M2 de 14 pulgadas. Tiene 16GB de RAM, 512GB SSD y procesador M2 que es perfecto para desarrollo. Cuesta $1,999 y está disponible en gris espacial. ¿Te interesa que te reserve una para probar?"
+                        </div>
+                    </div>
                 </section>
 
                 <!-- Slide 4: El Desafío Principal: Preparar el Dataset -->
@@ -152,14 +154,17 @@
                         <li><strong>Crear variaciones</strong> de cada caso</li>
                         <li><strong>Cambiar contexto</strong> manteniendo la estructura</li>
                     </ul>
-                    <h3>Ejemplo Práctico: Chatbot de TechStore</h3>
+                </section>
+                <section data-background-color="#FFF2E6" data-background-transition="zoom" data-auto-animate>
+                    <h2><span class="emoji">📈</span> Método de Expansión</h2>
+                    <h3>C. Método de Expansión (Recomendado para principiantes)</h3>
                     <div class="code-block">
-                        <strong>Caso base real:</strong><br>
+                        <strong>Caso base real:</strong>
                         Cliente: "¿Tienen laptops para gaming?"<br>
                         TechStore: "¡Sí! Tenemos la ASUS ROG Strix G15 con RTX 4060, 16GB RAM y pantalla 144Hz. Perfecta para gaming. Cuesta $1,299. ¿Te interesa?"
                     </div>
                     <div class="code-block">
-                        <strong>Expansión del dataset (crear 15+ variaciones):</strong><br>
+                        <strong>Expansión del dataset (crear variaciones):</strong>
                         "¿Qué laptops gaming tienen disponibles?"<br>
                         "Busco una laptop para jugar, ¿qué me recomiendan?"<br>
                         "¿Tienen computadoras para videojuegos?"<br>
@@ -192,8 +197,12 @@
             <section data-background-color="#F5F0FF" data-background-transition="zoom" data-auto-animate>
                 <!-- Slide 8: Dashboard de OpenAI Fine-tuning -->
                 <section>
-                    <h2><span class="emoji">🖥️</span> Dashboard de OpenAI Fine-tuning</h2>
-                    <h3>Ejemplo simplificado</h3>
+                    <h2><span class="emoji">🖥️</span> Ejemplo para Fine-tuning en OpenAI simplificado</h2>
+                    <div class="code-block">
+{"messages": [{"role": "system", "content": "sos un agente que responde con una sola palabra"}, {"role": "user", "content": "¿cómo estás hoy?"}, {"role": "assistant", "content": "bien"}]}<br>
+{"messages": [{"role": "system", "content": "sos un agente que responde con una sola palabra"}, {"role": "user", "content": "¿cómo está el clima hoy?"}, {"role": "assistant", "content": "llueve"}]}<br>
+{"messages": [{"role": "system", "content": "sos un agente que responde con una sola palabra"}, {"role": "user", "content": "¿cómo está el clima hoy?"}, {"role": "assistant", "content": "soleado"}]}<br>
+                    </div>
                 </section>
 
                 <!-- Slide 8: Dashboard de OpenAI Fine-tuning -->
@@ -236,7 +245,7 @@
                             <ul>
                                 <li><strong>Method:</strong> Supervised (recomendado)</li>
                                 <li><strong>Base Model:</strong> gpt-3.5-turbo-0125</li>
-                                <li><strong>Suffix:</strong> techstore (identificador único)</li>
+                                <li><strong>Suffix:</strong> una_palabra</li>
                                 <li><strong>Training Data:</strong> Tu archivo JSONL</li>
                             </ul>
                         </div>
